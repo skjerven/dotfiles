@@ -1,0 +1,149 @@
+#!/usr/bin/env zsh
+
+# Install command-line tools using Homebrew
+
+taps=(
+  beeftornado/rmtree
+  homebrew/dupes
+  homebrew/versions
+  homebrew/science
+  homebrew/python
+  caskroom/cask
+  caskroom/versions
+)
+
+# Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+packages=(
+  zsh
+  bash
+  "vim --override-system-vi --with-lua --with-luajiit --with-python3 --with-tcl"
+  git
+  svn
+  "wget --enable-iri"
+  ack
+  autoconf
+  automake
+  brew-rmtree
+  coreutils
+  ctags
+  diffutils
+  doxygen
+  "ed --default-names"
+  file-formula
+  findutils
+  gawk
+  gcc
+  gdb
+  ghi
+  "gnu-indent --default-names"
+  "gnu-sed --default-names"
+  "gnu-tar --default-names"
+  "gnu-which --default-names"
+  "gnutls --default-names"
+  gpatch
+  "grep --default-names"
+  gzip
+  hub
+  imagemagick
+  less
+  m4
+  make
+  man2html
+  matplotlib
+  moreutils
+  nano
+  python
+  python3
+  pyqt
+  qt
+  readline
+  reattach-to-user-namespace
+  rename
+  rsync
+  scons
+  screen
+  sphinx
+  the_platinum_searcher
+  tree
+  unrar
+  watch
+  "wdiff --with-gettext"
+  wget
+)
+
+# Install native apps
+cask_packages=(
+  alfred
+  appcleaner
+  avira-antivirus
+  cheatsheet
+  cuda
+  dropbox
+  evernote
+  flux
+  go2shell
+  google-chrome
+  google-drive
+  #gopro-studio
+  hermes
+  iterm2
+  #jaksta
+  java
+  #jdownloader
+  keepassx
+  mactex
+  #musicmanager
+  osxfuse
+  papers
+  seil
+  skype
+  slack
+  #sony-ericsson-bridge
+  sourcetree
+  spectacle
+  spotify
+  teamviewer
+  transmit
+  truecrypt
+  virtualbox
+  visit
+  vlc
+  xquartz
+)
+
+function log() {
+  echo $* > /dev/stderr
+}
+
+log "brew update"
+brew update
+
+log "brew upgrade"
+brew upgrade
+
+log "tapping.."
+for name in $taps
+do
+    log "brew tap ${name}"
+    brew tap $name
+done
+
+log "installing"
+for name_and_args in $packages
+do
+    log "brew install ${=name_and_args}"
+    brew install "${=name_and_args}"
+done
+
+for name_and_args in $cask_packages
+do
+    log "brew cask install ${=name_and_args}"
+    brew cask install "${=name_and_args}"
+done
+
+log "brew cleanup"
+brew cleanup
+
+log "brew linkapps"
+brew cask alfred link
+brew linkapps

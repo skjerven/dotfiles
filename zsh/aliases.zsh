@@ -52,6 +52,9 @@ alias ae='vim $yadr/zsh/aliases.zsh' #alias edit
 alias ar='source $yadr/zsh/aliases.zsh'  #alias reload
 alias gar="killall -HUP -u \"$USER\" zsh"  #global alias reload
 
+# VI/VIM
+alias vi='vim'
+
 # vim using
 mvim --version > /dev/null 2>&1
 MACVIM_INSTALLED=$?
@@ -65,10 +68,14 @@ alias :q='exit'
 # vimrc editing
 alias ve='vim ~/.vimrc'
 
+# Sudo VIM
+alias svi='sudo vi'
+
 # zsh profile editing
 alias ze='vim ~/.zshrc'
 
 # Git Aliases
+alias git='noglob hub'
 alias gs='git status'
 alias gstsh='git stash'
 alias gst='git stash'
@@ -108,6 +115,7 @@ alias gfap='git fetch --all --prune'
 alias gfch='git fetch'
 alias gd='git diff'
 alias gb='git b'
+alias gbd='git b -D -w'
 # Staged and cached are the same thing
 alias gdc='git diff --cached -w'
 alias gds='git diff --staged -w'
@@ -190,7 +198,6 @@ alias srdm='spring rake db:migrate'
 alias srdt='spring rake db:migrate'
 alias srdmt='spring rake db:migrate db:test:prepare'
 
-
 # Sprintly - https://github.com/nextbigsoundinc/Sprintly-GitHub
 alias sp='sprintly'
 # spb = sprintly branch - create a branch automatically based on the bug you're working on
@@ -210,4 +217,14 @@ alias dbmd='spring rake db:migrate:down'
 alias dbmu='spring rake db:migrate:up'
 
 # Homebrew
-alias brewu='brew update  && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+alias brewu='brew update && brew upgrade --all && brew cleanup && brew prune && brew doctor'
+alias cask='brew cask'
+
+# MATLAB
+alias matlab='matlab -desktop'
+
+# VIM Fasd alias
+alias v='f -t -e vim -b viminfo'
+
+# Pip update
+#alias update-pip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'

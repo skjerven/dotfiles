@@ -10,7 +10,14 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts
 
+  # install Homebrew
   install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
+
+  # install pip
+  install_pip if RUBY_PLATFORM.downcase.include?("darwin")
+
+  # install RVM
+  install_rvm
   install_rvm_binstubs
 
   # this has all the runcoms from this directory.
@@ -27,8 +34,13 @@ task :install => [:submodule_init, :submodules] do
 
   Rake::Task["install_prezto"].execute
 
+  # prezto zsh enhancements
+  Rake::Task["install_prezto"].execute
+
+  # powerline fonts
   install_fonts
 
+  # iTerm2 solarized theme
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
 
   run_bundle_config
@@ -141,6 +153,15 @@ def run_bundle_config
   puts
 end
 
+def install_rvm
+  puts "======================================================"
+  puts "Installing RVM"
+  puts "======================================================"
+  run %{ curl -L get.rvm.io | bash }
+  run %{ source ~/.rvm/scripts/rvm }
+  puts
+end
+
 def install_rvm_binstubs
   puts "======================================================"
   puts "Installing RVM Bundler support. Never have to type"
@@ -172,9 +193,16 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{brew install zsh ctags git hub tmux reattach-to-user-namespace the_silver_searcher ghi hub}
-  run %{brew install macvim --custom-icons --with-override-system-vim --with-lua --with-luajit}
+  run %{ $HOME/.yadr/bin/brew_bundle }
   puts
+  puts
+end
+
+def install_pip
+  puts "======================================================"
+  puts "Installing Python packages via pip"
+  puts "======================================================"
+  run %{ $HOME/.yadr/bin/pip_install }
   puts
 end
 

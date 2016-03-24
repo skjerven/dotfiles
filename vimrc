@@ -9,7 +9,7 @@ if filereadable(expand("~/.vimrc.before"))
 endif
 
 " ================ General Config ====================
-
+set mouse=a                     "Add mouse support
 set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
@@ -29,7 +29,7 @@ syntax on
 
 " Change leader to a comma because the backslash is too far away
 " That means all \x commands turn into ,x
-" The mapleader has to be set before vundle starts loading all 
+" The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
 
@@ -116,3 +116,6 @@ set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope = 0
