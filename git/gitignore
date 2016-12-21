@@ -497,7 +497,6 @@ sympy-plots-for-*.tex/
 *.xdy
 
 
->>>>>>> Added FastFold plugin to speed up neocomplete
 # Vim       taken from: https://github.com/github/gitignore/blob/master/Global/vim.gitignore
 # ----------------------------------------------------------------------------------------------
 [._]*.s[a-w][a-z]

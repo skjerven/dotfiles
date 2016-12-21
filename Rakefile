@@ -13,7 +13,7 @@ task :install => [:submodule_init, :submodules] do
   # install Homebrew
   install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
 
-  # install pip
+  #install pip
   install_pip if RUBY_PLATFORM.downcase.include?("darwin")
 
   # install RVM
