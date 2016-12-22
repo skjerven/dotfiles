@@ -1,0 +1,44 @@
+Host bitbucket
+    Hostname bitbucket.org
+    User skjerven
+    IdentityFile ~/.ssh/bitbucket_rsa
+
+Host chaos
+    Hostname chaos.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host galaxy
+    Hostname galaxy.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host github.com
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/github_rsa
+    IdentitiesOnly yes
+
+Host hpc-data
+    Hostname hpc-data.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host magnus
+    Hostname magnus.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host msi
+    Hostname login.msi.umn.edu
+    User skjerve1
+    IdentityFile ~/.ssh/msi_rsa
+
+Host xsede
+    Hostname login.xsede.org
+    User skjerven
+
+Host zeus
+    Hostname zeus.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa

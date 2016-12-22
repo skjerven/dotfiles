@@ -32,10 +32,11 @@ task :install => [:submodule_init, :submodules] do
     Rake::Task["install_vundle"].execute
   end
 
-  Rake::Task["install_prezto"].execute
-
   # prezto zsh enhancements
   Rake::Task["install_prezto"].execute
+
+  # set up ssh config file
+  install_ssh_config
 
   # powerline fonts
   install_fonts
@@ -281,6 +282,13 @@ def ask(message, values)
   end
   selection = selection.to_i-1
   values[selection]
+end
+
+def install_ssh_config
+  puts
+  puts "Setting up ssh config file"
+  run %{ ln -nfs "$HOME/.yadr/ssh/config" "$HOME/.ssh/config" }
+  run %{ chmod 600 "$HOME/.ssh/config }
 end
 
 def install_prezto
