@@ -8,7 +8,6 @@
     # Yet Another Dotfile Repo v1.1
     # Now with Prezto and Vundle!
 
-<<<<<<< HEAD
     sh -c "`curl -fsSL https://raw.github.com/skjerven/dotfiles/master/install.sh`"
 
 **Always be sure to run `rake update` after pulling to ensure plugins are updated**

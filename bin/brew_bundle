@@ -3,108 +3,101 @@
 # Install command-line tools using Homebrew
 
 taps=(
-  beeftornado/rmtree
+  homebrew/boneyard
+  homebrew/core
   homebrew/dupes
-  homebrew/versions
-  homebrew/science
   homebrew/python
+  homebrew/science
+  homebrew/versions
   caskroom/cask
   caskroom/versions
+  beeftornado/rmtree
 )
 
 # Don’t forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
 packages=(
-  zsh
-  bash
-  "vim --override-system-vi --with-lua --with-luajiit --with-python3 --with-tcl"
-  git
-  svn
-  "wget --enable-iri"
-  ack
   autoconf
   automake
+  bash
+  binutils
   brew-rmtree
+  cmake
   coreutils
+  cscope
   ctags
   diffutils
   doxygen
-  "ed --default-names"
+  "ed --with--default-names"
   file-formula
-  findutils
+  "findutils --with-default-names"
   gawk
-  gcc
+  "gcc --without-multilib" #disable multilib for OpenMP support
   gdb
-  ghi
-  "gnu-indent --default-names"
-  "gnu-sed --default-names"
-  "gnu-tar --default-names"
-  "gnu-which --default-names"
-  "gnutls --default-names"
+  git
+  "gnu-indent --with-default-names"
+  "gnu-sed --with-default-names"
+  "gnu-tar --with-default-names"
+  "gnu-which --with-default-names"
+  "gnutls --with-default-names"
   gpatch
   "grep --default-names"
   gzip
   hub
-  imagemagick
   less
-  m4
   make
-  man2html
-  matplotlib
   moreutils
-  nano
+  openssh
+  perl
   python
   python3
-  pyqt
-  qt
-  readline
   reattach-to-user-namespace
-  rename
+  ruby
   rsync
-  scons
-  screen
-  sphinx
-  the_platinum_searcher
+  svn
+  the_silver_searcher
   tree
+  "vim --with-lua --with-luajit --with-tcl"
   unrar
+  unzip
   watch
   "wdiff --with-gettext"
-  wget
+  "wget --enable-iri"
+  zsh
+  zsh-completions
 )
 
-# Install native apps
+# Install GUI apps
 cask_packages=(
   alfred
   appcleaner
-  avira-antivirus
-  cheatsheet
   cuda
+  disk-inventory-x
   dropbox
   evernote
   flux
   go2shell
   google-chrome
   google-drive
-  #gopro-studio
-  hermes
+  gopro-studio
   iterm2
-  #jaksta
+  jaksta
   java
-  #jdownloader
+  jdownloader
   keepassx
+  logitech-myharmony
   mactex
-  #musicmanager
-  osxfuse
+  mp4tools
+  music-manager
+  paraview
   papers
-  seil
   skype
   slack
-  #sony-ericsson-bridge
   sourcetree
   spectacle
   spotify
+  steam
+  synergy
   teamviewer
-  transmit
-  truecrypt
   virtualbox
   visit
   vlc
