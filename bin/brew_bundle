@@ -9,7 +9,6 @@ taps=(
   homebrew/python
   homebrew/science
   homebrew/versions
-  caskroom/cask
   caskroom/versions
   beeftornado/rmtree
 )
@@ -40,12 +39,15 @@ packages=(
   "gnu-which --with-default-names"
   "gnutls --with-default-names"
   gpatch
+  "graphviz --with-librsvg --with-x11"
   "grep --default-names"
   gzip
   hub
+  "imagemagick --with-librsvg --with-x11"
   less
   make
   moreutils
+  "mpich --cc=gcc-6 --build-from-source"
   openssh
   perl
   python
@@ -54,22 +56,29 @@ packages=(
   ruby
   rsync
   svn
+  swig
   the_silver_searcher
   tree
-  "vim --with-lua --with-luajit --with-tcl"
+  tmux
+  "vim --with-override-system-vi --with-lua --with-luajit --with-tcl"
   unrar
   unzip
   watch
   "wdiff --with-gettext"
   "wget --enable-iri"
+  zmq
   zsh
   zsh-completions
+  # Python packages, installed last for dependencies
+  "numpy --with-python3"
+  "scipy --with-python3"
+  "matplotlib --with-cairo --with-ghostscript --with-python3 --with-tex"
+  "pyqt --with-python3"
 )
 
 # Install GUI apps
 cask_packages=(
   alfred
-  appcleaner
   cuda
   disk-inventory-x
   dropbox
@@ -120,6 +129,12 @@ do
     log "brew tap ${name}"
     brew tap $name
 done
+
+log "installing XQuartz...required for some packages"
+brew cask install xquartz
+
+log "installing mactex...required for some packages"
+brew cask install mactex
 
 log "installing"
 for name_and_args in $packages
