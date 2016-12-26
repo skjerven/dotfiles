@@ -1,0 +1,34 @@
+#!/usr/bin/env zsh
+
+# Install Python packages via pip
+
+packages=(
+  cython
+  ipython[all]
+  jinja2
+  jupyter
+  mpi4py
+  nltk
+  nose
+  pandas
+  pygments
+  pytables
+  pyzmq
+  q
+  scientificpython
+  snakeviz
+  sympy
+  virtualenv
+  virtualenvwrapper
+)
+
+function log() {
+  echo $* > /dev/stderr
+}
+
+log "pip install"
+for name_and_args in $packages
+do
+    log "pip install ${=name_and_args}"
+    pip install "${=name_and_args}"
+done
