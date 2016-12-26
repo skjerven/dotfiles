@@ -26,7 +26,7 @@ packages=(
   ctags
   diffutils
   doxygen
-  "ed --with--default-names"
+  "ed --with-default-names"
   file-formula
   "findutils --with-default-names"
   gawk
