@@ -5,3 +5,9 @@ if [ -d $HOME/.zsh.before/ ]; then
     for config_file ($HOME/.zsh.before/*.zsh) source $config_file
   fi
 fi
+
+# OS detection
+# Source: cowboy/dotfiles git repo
+function is_osx() {
+  [[ "$OSTYPE" =~ ^darwin ]] || return 1
+}
