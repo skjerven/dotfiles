@@ -116,6 +116,3 @@ set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
-
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope = 0
