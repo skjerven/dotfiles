@@ -288,7 +288,7 @@ def install_ssh_config
   puts
   puts "Setting up ssh config file"
   run %{ ln -nfs "$HOME/.yadr/ssh/config" "$HOME/.ssh/config" }
-  run %{ chmod 600 "$HOME/.ssh/config }
+  run %{ chmod 600 "$HOME/.ssh/config" }
 end
 
 def install_prezto

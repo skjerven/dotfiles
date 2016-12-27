@@ -39,6 +39,7 @@ packages=(
   "gnu-which --with-default-names"
   "gnutls --with-default-names"
   gpatch
+  gpg
   "graphviz --with-librsvg --with-x11"
   "grep --default-names"
   gzip
@@ -73,7 +74,7 @@ packages=(
   "numpy --with-python3"
   "scipy --with-python3"
   "matplotlib --with-cairo --with-ghostscript --with-python3 --with-tex"
-  "pyqt --with-python3"
+  "pyqt5 --with-python"
 )
 
 # Install GUI apps
@@ -153,5 +154,4 @@ log "brew cleanup"
 brew cleanup
 
 log "brew linkapps"
-brew cask alfred link
 brew linkapps
