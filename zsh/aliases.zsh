@@ -32,13 +32,15 @@ alias cls='clear;ls'
 alias df='df -h'
 alias du='du -h -d 2'
 
-if [[ $platform == 'linux' ]]; then
+# Using Homebrew GNU packages and prezto gnu-utility
+# so if/else logic not needed
+#if [[ $platform == 'linux' ]]; then
   alias ll='ls -alh --color=auto'
   alias ls='ls --color=auto'
-elif [[ $platform == 'darwin' ]]; then
-  alias ll='ls -alGh'
-  alias ls='ls -Gh'
-fi
+#elif [[ $platform == 'darwin' ]]; then
+#  alias ll='ls -alGh'
+#  alias ls='ls -Gh'
+#fi
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
