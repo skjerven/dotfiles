@@ -2,8 +2,8 @@
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" TODO: this may not be in the correct place. It is intended to allow overriding <Leader>.
-" source ~/.vimrc.before if it exists.
+" TODO: this may not be in the correct place. It is intended to allow
+" overriding <Leader>.  source ~/.vimrc.before if it exists.
 if filereadable(expand("~/.vimrc.before"))
   source ~/.vimrc.before
 endif
@@ -14,7 +14,7 @@ set number                      "Line numbers are good
 set backspace=indent,eol,start  "Allow backspace in insert mode
 set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
-set showmode                    "Show current mode down the bottom
+set noshowmode                  "Disable current mode (lightline does this)
 set gcr=a:blinkon0              "Disable cursor blink
 set visualbell                  "No sounds
 set autoread                    "Reload files changed outside vim
@@ -24,7 +24,7 @@ set autoread                    "Reload files changed outside vim
 " http://items.sjbach.com/319/configuring-vim-right
 set hidden
 
-"turn on syntax highlighting
+" Turn on syntax highlighting
 syntax on
 
 " Change leader to a comma because the backslash is too far away
@@ -32,6 +32,14 @@ syntax on
 " The mapleader has to be set before vundle starts loading all
 " the plugins.
 let mapleader=","
+
+" Open vimrc from any vim buffer into a new tab, automatically
+" source any changes
+map <leader>vimrc :tabe ~/.vimrc<cr>
+autocmd bufwritepost .vimrc source $MYVIMRC
+
+" Map <F5> to toggle paste from clipboard
+set pastetoggle=<F5>
 
 " =============== Vundle Initialization ===============
 " This loads all the plugins specified in ~/.vim/vundles.vim
@@ -76,6 +84,9 @@ filetype indent on
 " Display tabs and trailing spaces visually
 set list listchars=tab:\ \ ,trail:·
 
+" Use <leader>l to toggle display of whitespace
+nmap <leader>l :set list!<CR>
+
 set nowrap       "Don't wrap lines
 set linebreak    "Wrap lines at convenient points
 
@@ -100,12 +111,16 @@ set wildignore+=log/**
 set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 
-"
 " ================ Scrolling ========================
 
 set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
+
+" More suble popup colors
+if has ('gui_running')
+  highlight Pmenu guibg=#cccccc gui=bold
+endif
 
 " ================ Search ===========================
 
