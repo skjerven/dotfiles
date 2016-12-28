@@ -49,7 +49,6 @@ packages=(
   make
   moreutils
   "mpich --cc=gcc-6 --build-from-source"
-  openssh
   perl
   python
   python3

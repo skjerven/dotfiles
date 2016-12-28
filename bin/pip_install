@@ -3,19 +3,28 @@
 # Install Python packages via pip
 
 packages=(
+  coverage
   cython
   "ipython[all]"
   jinja2
   jupyter
+  mock
   mpi4py
   nltk
   nose
   pandas
+  pdb
+  pep8
+  pip-autoremove
   pygments
+  pylint
+  pytables
   pyzmq
+  pytest
   q
   snakeviz
   sympy
+  tox
   virtualenv
   virtualenvwrapper
 )

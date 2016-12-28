@@ -1,3 +1,6 @@
+" Toggle NerdTree
+map <F2> :NERDTreeToggle<CR>
+
 " Make nerdtree look nice
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
