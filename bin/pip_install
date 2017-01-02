@@ -3,11 +3,15 @@
 # Install Python packages via pip
 
 packages=(
+  numpy
+  scipy
+  cairocffi
   coverage
   cython
   "ipython[all]"
   jinja2
   jupyter
+  matplotlib
   mock
   mpi4py
   nltk

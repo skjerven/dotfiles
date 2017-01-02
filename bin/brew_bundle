@@ -52,6 +52,7 @@ packages=(
   perl
   python
   python3
+  "pyqt5 --with-python"
   reattach-to-user-namespace
   ruby
   rsync
@@ -60,7 +61,7 @@ packages=(
   the_silver_searcher
   tree
   tmux
-  "vim --with-override-system-vi --with-lua --with-luajit --with-tcl"
+  "vim --with-override-system-vi --with-lua --with-luajit --with-tcl --with-client-server"
   unrar
   unzip
   watch
@@ -69,11 +70,6 @@ packages=(
   zmq
   zsh
   zsh-completions
-  # Python packages, installed last for dependencies
-  "numpy --with-python3"
-  "scipy --with-python3"
-  "matplotlib --with-cairo --with-ghostscript --with-python3 --with-tex"
-  "pyqt5 --with-python"
 )
 
 # Install GUI apps
