@@ -49,6 +49,8 @@ alias da="salloc -p debugq"
 alias dq="squeue -p debugq"
 
 # Module aliases
-alias ml="module list"
+alias mls="module list"
 alias ms="module swap"
 alias ma="module avail"
+alias mld="module load"
+alias mrm="module remove"
