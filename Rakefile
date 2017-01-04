@@ -180,7 +180,7 @@ def install_homebrew
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts "already installed, this will do nothing."
     puts "======================================================"
-    run %{ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"}
+    run %{ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" }
   end
 
   puts
@@ -188,13 +188,13 @@ def install_homebrew
   puts "======================================================"
   puts "Updating Homebrew."
   puts "======================================================"
-  run %{brew update}
+  run %{ brew update }
   puts
   puts
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{ $HOME/.yadr/bin/brew_bundle }
+  run %{ brew bundle $HOME/.yader/Brewfile }
   puts
   puts
 end
