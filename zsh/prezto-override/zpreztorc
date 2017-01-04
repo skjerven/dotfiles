@@ -38,11 +38,13 @@ zstyle ':prezto:load' pmodule \
   'command-not-found' \
   'git' \
   'osx' \
-  'ruby' \
+  'spectrum' \
+  'python' \
   'syntax-highlighting' \
   'history-substring-search' \
   'ssh' \
-  'prompt'
+  'prompt' \
+  'homebrew'
 
 #
 # Editor
@@ -134,4 +136,6 @@ zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Auto start a session when Zsh is launched.
 # zstyle ':prezto:module:tmux' auto-start 'yes'
+
+
 
