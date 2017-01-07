@@ -364,7 +364,6 @@ build/
 # For projects that use SCons for building
 .sconsign.dblite
 
-
 # Tags      taken from: https://github.com/github/gitignore/blob/master/Global/Tags.gitignore
 # ----------------------------------------------------------------------------------------------
 # Ignore tags created by etags, ctags, gtags (GNU global) and cscope
