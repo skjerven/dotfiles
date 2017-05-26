@@ -222,3 +222,5 @@ alias v='f -t -e vim -b viminfo'
 
 # Pip update
 #alias update-pip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'
+
+alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
