@@ -1,17 +1,24 @@
-Host bitbucket
+# Fix for OSX Sierra no longer saving ssh keys in keychain
+AddKeysToAgent yes
+UseKeychain yes
+
+Host bitbucket.org
     Hostname bitbucket.org
-    User skjerven
+    User git
     IdentityFile ~/.ssh/bitbucket_rsa
+    IdentitiesOnly yes
 
 Host chaos
     Hostname chaos.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
+    ServerAliveInterval 300
 
 Host galaxy
     Hostname galaxy.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
+    ServerAliveInterval 300
 
 Host github.com
     Hostname github.com
@@ -23,11 +30,13 @@ Host hpc-data
     Hostname hpc-data.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
+    ServerAliveInterval 300
 
 Host magnus
     Hostname magnus.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
+    ServerAliveInterval 300
 
 Host msi
     Hostname login.msi.umn.edu
@@ -42,3 +51,4 @@ Host zeus
     Hostname zeus.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
+    ServerAliveInterval 300
