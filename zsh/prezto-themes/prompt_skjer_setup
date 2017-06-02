@@ -1,0 +1,143 @@
+#
+# A theme combining skwp and sorin
+#  * Python virtenv information
+#  * Git branch info on the left
+#  * Single line prompt
+#
+
+# Load dependencies
+pmodload 'helper'
+
+# Function to display username and host
+function prompt_skjer_host {
+  # username@hostname
+  _prompt_skjer_host="%F{135}%n%f@%F{166}%m%f"
+}
+
+# Function to display truncated current directory
+function prompt_skjer_pwd {
+  local pwd="${PWD/#$HOME/~}"
+
+  if [[ "$pwd" == (#m)[/~] ]]; then
+    _prompt_skjer_pwd="$MATCH"
+    unset MATCH
+  else
+    _prompt_skjer_pwd="${${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}//\%/%%}/${${pwd:t}//\%/%%}"
+  fi
+}
+
+# sorin's git info function
+function prompt_skjer_git_info {
+  if (( _prompt_skjer_precmd_async_pid > 0 )); then
+    # Append Git status.
+    if [[ -s "$_prompt_skjer_precmd_async_data" ]]; then
+      alias typeset='typeset -g'
+      source "$_prompt_skjer_precmd_async_data"
+      RPROMPT+='${git_info:+${(e)git_info[status]}}'
+      unalias typeset
+    fi
+
+    # Reset PID.
+    _prompt_skjer_precmd_async_pid=0
+
+    # Redisplay prompt.
+    zle && zle reset-prompt
+  fi
+}
+
+function prompt_skjer_precmd_async {
+  # Get Git repository information.
+  if (( $+functions[git-info] )); then
+    git-info
+    typeset -p git_info >! "$_prompt_skjer_precmd_async_data"
+  fi
+
+  # Signal completion to parent process.
+  kill -WINCH $$
+}
+
+function prompt_skjer_precmd {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+
+  # Format user/hostname
+  prompt_skjer_host
+
+  # Format PWD
+  prompt_skjer_pwd
+
+  # Define prompts
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${ruby_info[version]}'
+
+  # Kill the old process of slow commands if it is still running.
+  if (( _prompt_skjer_precmd_async_pid > 0 )); then
+    kill -KILL "$_prompt_skjer_precmd_async_pid" &>/dev/null
+  fi
+
+  # Get ruby information
+  if (( $+functions[ruby-info] )); then
+    ruby-info
+  fi
+
+  # Check for virtualenv
+  if (( $+functions[python-info] )); then
+    python-info
+  fi
+
+  # Compute slow commands in the background.
+  trap prompt_skjer_git_info WINCH
+  prompt_skjer_precmd_async &!
+  _prompt_skjer_precmd_async_pid=$!
+}
+
+function prompt_skjer_setup {
+  setopt LOCAL_OPTIONS
+  unsetopt XTRACE KSH_ARRAYS
+  prompt_opts=(cr percent subst)
+  _prompt_skjer_precmd_async_pid=0
+  _prompt_skjer_precmd_async_data="${TMPPREFIX}-prompt_skjer_data"
+
+  # Load required functions
+  autoload -Uz add-zsh-hook
+
+  # Add hook for calling git-info, ruby-info and python-info before each command
+  add-zsh-hook precmd prompt_skjer_precmd
+
+  # Set editor-info parameters
+  zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary' format ' %B%F{124}❯%F{130}❯%F{100}❯%f%b'
+  zstyle ':prezto:module:editor:info:keymap:primary:overwrite' format ' %F{red}♺%f'
+  zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{100}❮%F{130}❮%F{124}❮%f%b'
+
+  #set git-info parameters
+  BRANCH="\u0020\ue0a0\u0020"
+  zstyle ':prezto:module:git:info' verbose 'yes'
+  zstyle ':prezto:module:git:info:action' format '%F{7}:%f%%B%F{9}%s%f%%b'
+  zstyle ':prezto:module:git:info:added' format ' %%B%F{100}✚%f%%b'
+  zstyle ':prezto:module:git:info:ahead' format ' %%B%F{057}⬆%f%%b'
+  zstyle ':prezto:module:git:info:behind' format ' %%B%F{057}⬇%f%%b'
+  zstyle ':prezto:module:git:info:branch' format ' %F{043}$BRANCH%F{043}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ' %F{043}➦ %.7c%f'
+  zstyle ':prezto:module:git:info:deleted' format ' %%B%F{160}✖%f%%b'
+  zstyle ':prezto:module:git:info:modified' format ' %%B%F{033}✱%f%%b'
+  zstyle ':prezto:module:git:info:position' format ' %F{red}(%p)%f'
+  zstyle ':prezto:module:git:info:renamed' format ' %%B%F{126}➜%f%%b'
+  zstyle ':prezto:module:git:info:stashed' format ' %%B%F{037}✭%f%%b'
+  zstyle ':prezto:module:git:info:unmerged' format ' %%B%F{142}═%f%%b'
+  zstyle ':prezto:module:git:info:untracked' format ' %%B%F{white}◼%f%%b'
+  zstyle ':prezto:module:git:info:keys' format \
+    'status' '$(coalesce "%b" "%p" "%c")%c%s%A%B%S%a%d%m%r%U%u'
+
+  # virtualenv
+  zstyle ':prezto:module:python:info:virtualenv' format '[virtualenv %v]'
+
+  # ruby info (rvm, rbenv)
+  zstyle ':prezto:module:ruby:info:version' format '[%v]'
+
+  # Define prompts
+  PROMPT='${_prompt_skjer_host} %F{112}${_prompt_skjer_pwd}%(!. %B%F{160}#%f%b.)${editor_info[keymap]} '
+  RPROMPT=''
+  SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
+}
+
+prompt_skjer_setup "$@"
