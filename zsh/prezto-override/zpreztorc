@@ -45,14 +45,19 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'ssh' \
   'prompt' \
-  'homebrew'
+  'homebrew' \
+  'docker' \
+  'rsync'
 
 #
 # Autosuggestions
 #
 
+# Enable highlighting
+# zstyle ':prezto:module:autosuggestions' color 'yes'
+
 # Set the query found color.
-zstyle ':prezto:module:autosuggestions:color' found ''
+# zstyle ':prezto:module:autosuggestions:color' found 'fg=240'
 
 #
 # Editor
@@ -67,6 +72,9 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 # Git
 #
+
+# Set format for git log.  Options are 'brief', 'oneline', or 'medium'
+# zstyle ':prezto:module:git:log:context' format ''
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
@@ -111,18 +119,18 @@ zstyle ':prezto:module:prompt' theme 'skjer'
 zstyle ':prezto:module:prompt' pwd-length 'short'
 
 #
-# Ruby
-#
-
-# Auto switch the Ruby version on directory change.
-zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
-
-#
 # Python
 #
 
 # Auto switch the Python virtualenv on directory change.
 zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+
+#
+# Ruby
+#
+
+# Auto switch the Ruby version on directory change.
+zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 
 #
 # Screen
@@ -139,10 +147,10 @@ zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 #
 
 # Enable ssh-agent forwarding.
-zstyle ':prezto:module:ssh-agent' forwarding 'yes'
+# zstyle ':prezto:module:ssh-agent' forwarding 'yes'
 
 # Set ssh-agent identities to load.
-zstyle ':prezto:module:ssh-agent' identities 'id_rsa' 'id_rsa2' 'id_github'
+# zstyle ':prezto:module:ssh-agent' identities 'id_rsa' 'id_rsa2' 'id_github'
 
 #
 # Syntax Highlighting
