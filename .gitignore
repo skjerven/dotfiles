@@ -14,5 +14,3 @@ vim/sessions
 .netrwhist
 bin/subl
 tags
-
-ssh/config

@@ -1,0 +1,63 @@
+# Set compression
+Compression yes
+CompressionLevel 6
+
+# Specify forwarding options
+ForwardAgent no
+ForwardX11 no
+ForwardX11Trusted yes
+
+# Fix for OSX Sierra no longer saving ssh keys in keychain
+AddKeysToAgent yes
+UseKeychain yes
+
+# Set up session keep alive settings
+ServerAliveInterval 100
+ServerAliveCountMax 2
+
+
+Host bitbucket.org
+    Hostname bitbucket.org
+    User git
+    IdentityFile ~/.ssh/bitbucket_rsa
+    IdentitiesOnly yes
+
+Host chaos
+    Hostname chaos.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host galaxy
+    Hostname galaxy.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host github.com
+    Hostname github.com
+    User git
+    IdentityFile ~/.ssh/github_rsa
+    IdentitiesOnly yes
+
+Host hpc-data
+    Hostname hpc-data.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host magnus
+    Hostname magnus.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
+
+Host msi
+    Hostname login.msi.umn.edu
+    User skjerve1
+    IdentityFile ~/.ssh/msi_rsa
+
+Host xsede
+    Hostname login.xsede.org
+    User skjerven
+
+Host zeus
+    Hostname zeus.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
