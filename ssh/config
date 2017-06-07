@@ -8,8 +8,8 @@ ForwardX11 no
 ForwardX11Trusted yes
 
 # Fix for OSX Sierra no longer saving ssh keys in keychain
-AddKeysToAgent yes
-UseKeychain yes
+#AddKeysToAgent yes
+#UseKeychain yes
 
 # Set up session keep alive settings
 ServerAliveInterval 100
