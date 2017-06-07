@@ -45,7 +45,7 @@ function cray () {
 }
 
 # Debug queue aliases
-alias da="salloc -p debugq"
+alias da="salloc -p debugq /bin/bash -l"
 alias dq="squeue -p debugq"
 
 # Module aliases
