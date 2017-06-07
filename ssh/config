@@ -8,8 +8,8 @@ ForwardX11 no
 ForwardX11Trusted yes
 
 # Fix for OSX Sierra no longer saving ssh keys in keychain
-#AddKeysToAgent yes
-#UseKeychain yes
+AddKeysToAgent yes
+UseKeychain yes
 
 # Set up session keep alive settings
 ServerAliveInterval 100
@@ -26,6 +26,16 @@ Host chaos
     Hostname chaos.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
+
+Host cori
+    Hostname cori.nersc.gov
+    User skjerven
+    IdentityFile ~/.ssh/nersc_rsa
+
+Host edison
+    Hostname edison.nersc.gov
+    User skjerven
+    IdentityFile ~/.ssh/nersc_rsa
 
 Host galaxy
     Hostname galaxy.pawsey.org.au
