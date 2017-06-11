@@ -41,13 +41,13 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'ruby' \
   'python' \
-  'syntax-highlighting' \
-  'history-substring-search' \
   'ssh' \
-  'prompt' \
   'homebrew' \
   'docker' \
-  'rsync'
+  'rsync' \
+  'syntax-highlighting' \
+  'history-substring-search' \
+  'prompt'
 
 #
 # Autosuggestions
@@ -74,7 +74,7 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 #
 
 # Set format for git log.  Options are 'brief', 'oneline', or 'medium'
-# zstyle ':prezto:module:git:log:context' format ''
+ zstyle ':prezto:module:git:log:context' format 'oneline'
 
 # Ignore submodules when they are 'dirty', 'untracked', 'all', or 'none'.
 zstyle ':prezto:module:git:status:ignore' submodules 'all'
@@ -159,6 +159,9 @@ zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
 # Syntax Highlighting
 #
 
+# Turn on hightlighting
+zstyle ':prezto:module:syntax-highlighting' color 'yes'
+
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
  zstyle ':prezto:module:syntax-highlighting' highlighters \
@@ -170,10 +173,24 @@ zstyle ':prezto:module:ruby:chruby' auto-switch 'yes'
    'root'
 
 # Set syntax highlighting styles.
-# zstyle ':prezto:module:syntax-highlighting' styles \
-#   'builtin' 'bg=blue' \
-#   'command' 'bg=blue' \
-#   'function' 'bg=blue'
+zstyle ':prezto:module:syntax-highlighting' styles \
+  'alias'                   'fg=green' \
+  'builtin'                 'fg=blue' \
+  'command'                 'fg=green' \
+  'function'                'fg=green' \
+  'globbing'                'fg=003' \
+  'reserved-word'           'fg=006'
+#  'commandseparator'
+#  'default'
+#  'double-hyphen-option'
+#  'double-quoted-argument'
+#  'globbing'
+#  'hashed-command'
+#  'history-expansion'
+#  'path'
+#  'precommand'
+#  'single-hyphen-option'
+#  'single-quoted-argument'
 
 # Set syntax pattern styles.
  zstyle ':prezto:module:syntax-highlighting' pattern \
