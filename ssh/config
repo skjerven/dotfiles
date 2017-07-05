@@ -3,7 +3,7 @@ Compression yes
 CompressionLevel 6
 
 # Specify forwarding options
-ForwardAgent no
+ForwardAgent yes
 ForwardX11 no
 ForwardX11Trusted yes
 
@@ -17,7 +17,6 @@ ServerAliveCountMax 2
 
 
 Host bitbucket.org
-    Hostname bitbucket.org
     User git
     IdentityFile ~/.ssh/bitbucket_rsa
     IdentitiesOnly yes
@@ -43,7 +42,6 @@ Host galaxy
     IdentityFile ~/.ssh/pawsey_rsa
 
 Host github.com
-    Hostname github.com
     User git
     IdentityFile ~/.ssh/github_rsa
     IdentitiesOnly yes
@@ -62,6 +60,11 @@ Host msi
     Hostname login.msi.umn.edu
     User skjerve1
     IdentityFile ~/.ssh/msi_rsa
+
+Host nimbus
+    Hostname jupyter-dev.ddns.net
+    User ubuntu
+    IdentityFile ~/.ssh/nimbus_rsa_bskjerven
 
 Host xsede
     Hostname login.xsede.org
