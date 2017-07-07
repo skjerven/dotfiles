@@ -34,6 +34,6 @@ funciton sys_update() {
   pwd=$PWD
   cd $yadr
   git fetch prezto master
-  git subtree pull --prefix ./zsh/prezto prezto master --squash
+  git subtree pull -P zsh/prezto --squash prezto master
   cd $pwd
 }
