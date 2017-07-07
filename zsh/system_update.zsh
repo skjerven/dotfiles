@@ -14,7 +14,7 @@ funciton sys_update() {
 
   # Homebrew casks
   echo "Updating Homebrew casks"
-  brew cu
+  brew cu -y
   echo ""
 
   # Update pip
