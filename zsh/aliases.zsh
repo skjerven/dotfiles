@@ -34,13 +34,9 @@ alias du='du -h -d 2'
 
 # Using Homebrew GNU packages and prezto gnu-utility
 # so if/else logic not needed
-#if [[ $platform == 'linux' ]]; then
+
 alias ll='ls -alh --color=auto'
 alias ls='ls --color=auto'
-#elif [[ $platform == 'darwin' ]]; then
-#  alias ll='ls -alGh'
-#  alias ls='ls -Gh'
-#fi
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
@@ -155,6 +151,18 @@ alias cl='clear'
 # Zippin
 alias gz='tar -zcvf'
 
+# Ruby
+alias c='rails c' # Rails 3
+alias co='script/console' # Rails 2
+alias cod='script/console --debugger'
+
+#If you want your thin to listen on a port for local VM development
+#export VM_IP=10.0.0.1 <-- your vm ip
+alias ts='thin start -a ${VM_IP:-127.0.0.1}'
+alias ms='mongrel_rails start'
+alias tfdl='tail -f log/development.log'
+alias tftl='tail -f log/test.log'
+
 alias ka9='killall -9'
 alias k9='kill -9'
 
@@ -222,5 +230,3 @@ alias v='f -t -e vim -b viminfo'
 
 # Pip update
 #alias update-pip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'
-
-alias brewu='brew update  && brew upgrade && brew cleanup && brew prune && brew doctor'
