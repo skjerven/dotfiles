@@ -21,4 +21,7 @@
   url = https://github.com/sindresorhus/pure.git
 [submodule "zsh/prezto/modules/fasd/external"]
   path = zsh/prezto/modules/fasd/external
-  url = https://github.com/clvv/fasd
+  url = https://github.com/clvv/fasd.git
+[submodule "zsh/prezto/modules/prompt/external/async"]
+  path = zsh/prezto/modules/prompt/external/async
+  url = https://github.com/mafredri/zsh-async.git
