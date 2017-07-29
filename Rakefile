@@ -189,6 +189,7 @@ def install_homebrew
   puts "Updating Homebrew."
   puts "======================================================"
   run %{ brew update }
+  run %{brew update}
   puts
   puts
   puts "======================================================"
@@ -292,6 +293,8 @@ def install_ssh_config
 end
 
 def install_prezto
+  puts
+  puts "Installing Prezto (ZSH Enhancements)..."
 
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
 

@@ -118,7 +118,7 @@ set scrolloff=8         "Start scrolling when we're 8 lines away from margins
 set sidescrolloff=15
 set sidescroll=1
 
-" More suble popup colors
+" More subtle popup colors
 if has ('gui_running')
   highlight Pmenu guibg=#cccccc gui=bold
 endif
