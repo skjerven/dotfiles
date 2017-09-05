@@ -13,6 +13,9 @@
 [submodule "zsh/prezto/modules/prompt/external/powerline"]
   path = zsh/prezto/modules/prompt/external/powerline
   url = https://github.com/davidjrice/prezto_powerline.git
+[submodule "zsh/prezto/modules/prompt/external/powerlevel9k"]
+  path = zsh/prezto/modules/prompt/external/powerlevel9k
+  url = https://github.com/bhilburn/powerlevel9k
 [submodule "zsh/prezto/modules/prompt/external/agnoster"]
   path = zsh/prezto/modules/prompt/external/agnoster
   url = https://github.com/agnoster/agnoster-zsh-theme.git
