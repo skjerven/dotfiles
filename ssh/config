@@ -15,6 +15,10 @@ UseKeychain yes
 ServerAliveInterval 100
 ServerAliveCountMax 2
 
+Host athena
+    Hostname athena.pawsey.org.au
+    User bskjerven
+    IdentityFile ~/.ssh/pawsey_rsa
 
 Host bitbucket.org
     User git
