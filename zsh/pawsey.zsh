@@ -54,3 +54,7 @@ alias ms="module swap"
 alias ma="module avail"
 alias mld="module load"
 alias mrm="module remove"
+
+# Filesytem aliases
+alias scr="cd $MYSCRATCH"
+alias grp="cd $MYGROUP"
