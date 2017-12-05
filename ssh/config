@@ -1,6 +1,5 @@
 # Set compression
 Compression yes
-CompressionLevel 6
 
 # Specify forwarding options
 ForwardAgent yes
