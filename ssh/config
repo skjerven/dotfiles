@@ -40,7 +40,7 @@ Host edison
     IdentityFile ~/.ssh/nersc_rsa
 
 Host galaxy
-    Hostname galaxy.pawsey.org.au
+    Hostname galaxy-1.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
 
@@ -55,7 +55,7 @@ Host hpc-data
     IdentityFile ~/.ssh/pawsey_rsa
 
 Host magnus
-    Hostname magnus.pawsey.org.au
+    Hostname magnus-1.pawsey.org.au
     User bskjerven
     IdentityFile ~/.ssh/pawsey_rsa
 
