@@ -28,7 +28,7 @@ funciton sys_update() {
   rvm use system
   gem update --system
   rvm use default
-  gem udpate
+  gem update
   echo ""
 
   echo "Updating prezto subtree"
