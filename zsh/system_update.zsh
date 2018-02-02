@@ -27,6 +27,8 @@ funciton sys_update() {
   echo "Updating ruby gems"
   rvm use system
   gem update --system
+  rvm use default
+  gem update
   echo ""
 
   echo "Updating prezto subtree"
