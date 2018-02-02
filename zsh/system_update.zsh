@@ -5,8 +5,9 @@
 # ruby gems (system and installed versions)
 # prezto subtree
 
-
 funciton sys_update() {
+
+if [[ is_osx ]]; then
   # Homebrew
   echo "Updating Homebrew packages"
   brewu
@@ -22,20 +23,21 @@ funciton sys_update() {
   pip install --upgrade pip
   pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 pip install -U
   echo ""
+fi
 
-  #Update gems
-  echo "Updating ruby gems"
-  rvm use system
-  gem update --system
-  rvm use default
-  gem update
-  echo ""
+#Update gems
+echo "Updating ruby gems"
+rvm use system
+gem update --system
+rvm use default
+gem update
+echo ""
 
-  echo "Updating prezto subtree"
-  # Update prezto subtree
-  pwd=$PWD
-  cd $yadr
-  git fetch prezto master
-  git subtree pull -P zsh/prezto --squash prezto master
-  cd $pwd
+echo "Updating prezto subtree"
+# Update prezto subtree
+pwd=$PWD
+cd $yadr
+git fetch prezto master
+git subtree pull -P zsh/prezto --squash prezto master
+cd $pwd
 }

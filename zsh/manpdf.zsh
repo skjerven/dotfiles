@@ -4,5 +4,6 @@
 is_osx || return 1
 
 function manpdf() {
-  man -t "${1}" | open -f -a /Applications/Preview.app/
+  man -t "${1}" | ps2pdf - /tmp/${1}_manpage.pdf
+  open /tmp/${1}_manpage.pdf
 }
