@@ -7,7 +7,7 @@
 
 funciton sys_update() {
 
-if [[ is_osx ]]; then
+if is_osx; then
   # Homebrew
   echo "Updating Homebrew packages"
   brewu
@@ -27,8 +27,10 @@ fi
 
 #Update gems
 echo "Updating ruby gems"
-rvm use system
-gem update --system
+if is_osx; then
+  rvm use system
+  gem update --system
+fi
 rvm use default
 gem update
 echo ""
