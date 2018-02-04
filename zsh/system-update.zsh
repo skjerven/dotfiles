@@ -4,10 +4,12 @@
 # pip packages
 # ruby gems (system and installed versions)
 # prezto subtree
+# VIM plugins
 
 function system-update() {
   brew-update
   pip-update
   ruby-update
   prezto-update
+  vim-update
 }

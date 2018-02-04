@@ -228,5 +228,5 @@ alias matlab='matlab -desktop'
 # VIM Fasd alias
 alias v='f -t -e vim -b viminfo'
 
-# Pip update
-#alias update-pip='pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs pip install -U'
+# System update
+alias sysu='system-update'

@@ -44,7 +44,8 @@ function cray () {
   fi
 }
 
-# Debug queue aliases
+# Queue aliases
+alias sq='squeue'
 alias da="salloc -p debugq /bin/bash -l"
 alias dq="squeue -p debugq"
 
@@ -58,3 +59,4 @@ alias mrm="module remove"
 # Filesytem aliases
 alias scr="cd $MYSCRATCH"
 alias grp="cd $MYGROUP"
+alias sfw="cd $MYGROUP/software/$PAWSEY_OS"
