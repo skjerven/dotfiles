@@ -10,4 +10,5 @@ function vim-update() {
   cd $HOME/.vim/bundle
   zargs -n 1 -P 10 -- * -- _update
   cd - > /dev/null
+  echo ""
 }

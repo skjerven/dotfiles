@@ -5,4 +5,5 @@ function prezto-update() {
   git fetch prezto master
   git subtree pull -P zsh/prezto --squash prezto master
   cd - > /dev/null
+  echo ""
 }
