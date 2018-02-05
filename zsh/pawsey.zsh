@@ -1,14 +1,13 @@
 # Pawsey-specific aliases (things like PrgEnvs, slurm, etc.)
 
+# Functions to swap between PrgEnvs
 function gnu () {
   if ((${#CRAY_PRGENVCRAY[@]})); then
     echo "Swapping from Cray to GNU PrgEnv"
     module swap PrgEnv-cray PrgEnv-gnu
-    module swap gcc gcc/4.9.2
   elif ((${#CRAY_PRGENVINTEL[@]})); then
     echo "Swapping from Intel to GNU PrgEnv"
     module swap PrgEnv-intel PrgEnv-gnu
-    module swap gcc gcc/4.9.2
   elif ((${#CRAY_PRGENVGNU[@]})); then
     echo "GNU PrgEnv already loaded";
   else
@@ -42,6 +41,15 @@ function cray () {
   else
     echo "No PrgEnv currently loaded"
   fi
+}
+
+# Function to mass remove directories on Lustre filesystems
+# Uses munlink to remove files
+# Requires a directory to passed as an argument
+function rm-scr() {
+   zargs "$1"/**/*(.) -- munlink
+   zargs "$1"/**/*(/) -- rm -rf
+   rm -rf $1
 }
 
 # Queue aliases
