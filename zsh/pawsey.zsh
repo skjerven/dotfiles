@@ -54,7 +54,7 @@ function rm-scr() {
 
 # Queue aliases
 alias sq='squeue'
-alias da="salloc -p debugq /bin/bash -l"
+alias da="salloc -p debugq"
 alias dq="squeue -p debugq"
 
 # Module aliases
