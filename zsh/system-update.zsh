@@ -10,6 +10,6 @@ function system-update() {
   brew-update
   pip-update
   ruby-update
-  prezto-update
   vim-update
+  prezto-update
 }

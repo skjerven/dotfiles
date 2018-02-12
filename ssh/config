@@ -65,7 +65,7 @@ Host msi
     IdentityFile ~/.ssh/msi_rsa
 
 Host nimbus
-    Hostname jupyter-dev.ddns.net
+    Hostname 146.118.65.43
     User ubuntu
     IdentityFile ~/.ssh/nimbus_rsa_bskjerven
 
