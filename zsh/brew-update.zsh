@@ -8,7 +8,7 @@ if is_osx; then
 
   #Homebrew casks
   echo "Updating Homebrew casks"
-  brew cu -y
+  brew cu -yfa
   echo ""
 fi
 }
