@@ -7,3 +7,6 @@ export QUOTING_STYLE=literal
 
 # Homebrew changed how python executables are named
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
+# Add thefuck module
+eval "$(thefuck --alias)"
