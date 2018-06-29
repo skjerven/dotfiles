@@ -114,7 +114,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.yadr/git/gitignore
+  excludesfile = /Users/skj002/.yadr/git/gitignore
 [advice]
   statusHints = false
 [diff]
@@ -129,7 +129,7 @@
 [include]
   path = .gitconfig.user
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
