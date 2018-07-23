@@ -14,6 +14,9 @@
 " Turn on pymode plugin
 let g:pymode = 1
 
+" Use python 3
+let g:pymode_python = 'python3'
+
 " Setup default options
 let g:pymode_options = 1
 
