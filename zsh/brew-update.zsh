@@ -3,7 +3,11 @@ function brew-update() {
 if is_osx; then
   #Homebrew
   echo "Updating Homebrew packages"
-  brewu
+  brew update
+  brew upgrade
+  brew cleanup
+  brew prune
+  brew doctor
   echo ""
 
   #Homebrew casks
