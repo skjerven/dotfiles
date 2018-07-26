@@ -68,3 +68,7 @@ alias mrm="module remove"
 alias scr="cd $MYSCRATCH"
 alias grp="cd $MYGROUP"
 alias sfw="cd $MYGROUP/software/$PAWSEY_OS"
+
+# Tweak zsh
+skip_global_compinit=1
+unsetopt cdablevars

@@ -230,3 +230,6 @@ alias v='f -t -e vim -b viminfo'
 
 # System update
 alias sysu='system-update'
+
+# Use HTop instead of top
+alias top='htop'

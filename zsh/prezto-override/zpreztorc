@@ -33,7 +33,6 @@ zstyle ':prezto:load' pmodule \
   'utility' \
   'completion' \
   'archive' \
-  'fasd' \
   'command-not-found' \
   'git' \
   'osx' \
@@ -48,6 +47,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt'
+#fasd
 
 #
 # Autosuggestions
@@ -235,3 +235,10 @@ zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 
 # Set the default session name:
 # zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+
+
+#
+# Completion
+#
+
+zstyle ':completion:*' accept-exact-dirs true
