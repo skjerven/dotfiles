@@ -37,17 +37,17 @@ zstyle ':prezto:load' pmodule \
   'git' \
   'osx' \
   'spectrum' \
-  'ruby' \
-  'python' \
   'ssh' \
   'homebrew' \
   'docker' \
-  'rsync' \
   'tmux' \
   'syntax-highlighting' \
   'history-substring-search' \
-  'prompt'
+  'prompt' \
+  'contrib-thefuck'
 #fasd
+#ruby
+#python
 
 #
 # Autosuggestions
@@ -68,6 +68,9 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 
 # Auto convert .... to ../..
 zstyle ':prezto:module:editor' dot-expansion 'yes'
+
+# Enable prompt context
+zstyle ':prezto:module:editor' ps-context 'yes'
 
 #
 # Git
@@ -103,6 +106,14 @@ zstyle ':prezto:module:history-substring-search:color' not-found 'bg=red,fg=whit
 zstyle ':prezto:module:history-substring-search' globbing-flags ''
 
 #
+# OSX
+#
+
+# Change keyword used by mand to open man pages in Dash
+zstyle ':prezto:module:osx:man' dash-keyword 'keyword'
+
+
+#
 # Pacman
 #
 
@@ -126,7 +137,7 @@ zstyle ':prezto:module:prompt' pwd-length 'short'
 #
 
 # Auto switch the Python virtualenv on directory change.
-zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
+#zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 
 #
 # Ruby
@@ -154,14 +165,15 @@ zstyle ':prezto:module:ssh-agent' forwarding 'yes'
 
 # Set ssh-agent identities to load.
 zstyle ':prezto:module:ssh-agent' identities \
-  'MassiveLauncherKey' \
   'bitbucket_rsa' \
   'github_rsa' \
+  'jenkins_pawsey_rsa' \
   'msi_rsa' \
   'nersc_rsa' \
   'nimbus_rsa_bskjerven' \
   'pawsey_rsa' \
-  'qnap_rsa'
+  'qnap_rsa' \
+  'router_rsa'
 
 #
 # Syntax Highlighting
@@ -172,7 +184,7 @@ zstyle ':prezto:module:syntax-highlighting' color 'yes'
 
 # Set syntax highlighters.
 # By default, only the main highlighter is enabled.
- zstyle ':prezto:module:syntax-highlighting' highlighters \
+zstyle ':prezto:module:syntax-highlighting' highlighters \
    'main' \
    'brackets' \
    'pattern' \
@@ -201,7 +213,7 @@ zstyle ':prezto:module:syntax-highlighting' styles \
 #  'single-quoted-argument'
 
 # Set syntax pattern styles.
- zstyle ':prezto:module:syntax-highlighting' pattern \
+zstyle ':prezto:module:syntax-highlighting' pattern \
    'rm*-rf*' 'fg=white,bold,bg=red'
 
 #
@@ -209,13 +221,13 @@ zstyle ':prezto:module:syntax-highlighting' styles \
 #
 
 # Auto set the tab and window titles.
- zstyle ':prezto:module:terminal' auto-title 'yes'
+zstyle ':prezto:module:terminal' auto-title 'yes'
 
 # Set the window title format.
- zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
+zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 
 # Set the tab title format.
- zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
+zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
 # zstyle ':prezto:module:terminal:multiplexer-title' format '%s'

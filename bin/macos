@@ -178,6 +178,9 @@ defaults write com.apple.dock itunes-notifications -bool true
 # Disable shadow in screenshots
 defaults write com.apple.screencapture disable-shadow -bool true
 
+# Change default screenshot location (desktop is annoying)
+defaults write com.apple.screencapture location ~/Downloads/Screenshots
+
 # Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 

@@ -1,9 +1,10 @@
 Bundle "jistr/vim-nerdtree-tabs.git"
 Bundle "scrooloose/nerdtree.git"
+Bundle "Xuyuanp/nerdtree-git-plugin"
 Bundle "scrooloose/nerdcommenter.git"
 Bundle "ctrlpvim/ctrlp.vim"
-Bundle 'JazzCore/ctrlp-cmatcher'
-Bundle 'junegunn/fzf'
+Bundle "JazzCore/ctrlp-cmatcher"
+Bundle "junegunn/fzf"
 Bundle "xolox/vim-misc"
 Bundle "xolox/vim-session"
 Bundle "rizzatti/dash.vim"
