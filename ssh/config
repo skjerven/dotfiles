@@ -7,17 +7,12 @@ ForwardX11 no
 ForwardX11Trusted yes
 
 # Fix for OSX Sierra no longer saving ssh keys in keychain
-#AddKeysToAgent yes
-#UseKeychain yes
+AddKeysToAgent yes
+UseKeychain yes
 
 # Set up session keep alive settings
 ServerAliveInterval 100
 ServerAliveCountMax 2
-
-Host athena
-    Hostname athena.pawsey.org.au
-    User bskjerven
-    IdentityFile ~/.ssh/pawsey_rsa
 
 Host bitbucket.org
     User git
@@ -65,7 +60,7 @@ Host msi
     IdentityFile ~/.ssh/msi_rsa
 
 Host nimbus
-    Hostname 146.118.65.43
+    Hostname nimbus.skjerven.me
     User ubuntu
     IdentityFile ~/.ssh/nimbus_rsa_bskjerven
 
