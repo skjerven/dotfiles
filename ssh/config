@@ -61,7 +61,7 @@ Host msi
 
 Host nimbus
     Hostname nimbus.skjerven.me
-    User ubuntu
+    User bskjerven
     IdentityFile ~/.ssh/nimbus_rsa_bskjerven
 
 Host xsede
