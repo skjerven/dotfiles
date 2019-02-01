@@ -44,7 +44,7 @@ zstyle ':prezto:load' pmodule \
   'syntax-highlighting' \
   'history-substring-search' \
   'prompt' \
-  'contrib-thefuck'
+  'thefuck'
 #fasd
 #ruby
 #python
@@ -254,3 +254,4 @@ zstyle ':prezto:module:tmux:iterm' integrate 'yes'
 #
 
 zstyle ':completion:*' accept-exact-dirs true
+
