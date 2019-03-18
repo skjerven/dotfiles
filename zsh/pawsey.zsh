@@ -52,8 +52,10 @@ function rm-scr() {
    rm -rf $1
 }
 
-# Queue aliases
+# Queue aliases #
 alias sq='squeue'
+alias squ='squeue -u $USER'
+alias sqc='scancel -u $USER'
 alias da="salloc -p debugq"
 alias dq="squeue -p debugq"
 
