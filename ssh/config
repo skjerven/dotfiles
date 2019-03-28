@@ -29,6 +29,11 @@ Host cori
     User skjerven
     IdentityFile ~/.ssh/nersc_rsa
 
+Host cug
+    Hostname cug.org
+    User crayusergroup
+    IdentityFile ~/.ssh/cug_rsa
+
 Host edison
     Hostname edison.nersc.gov
     User skjerven
