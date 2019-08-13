@@ -16,7 +16,7 @@ set history=1000                "Store lots of :cmdline history
 set showcmd                     "Show incomplete cmds down the bottom
 set noshowmode                  "Disable current mode (lightline does this)
 set gcr=a:blinkon0              "Disable cursor blink
-set novisualbell                  "No sounds
+set novisualbell                "No sounds
 set autoread                    "Reload files changed outside vim
 
 " This makes vim act like all other editors, buffers can
@@ -58,9 +58,9 @@ set nowb
 " ================ Persistent Undo ==================
 " Keep undo history across sessions, by storing in file.
 " Only works all the time.
-if has('persistent_undo') && isdirectory(expand('~').'/.vim/backups')
-  silent !mkdir ~/.vim/backups > /dev/null 2>&1
-  set undodir=~/.vim/backups
+if has('persistent_undo') && isdirectory(expand('~').'/.vim/undodir')
+  silent !mkdir ~/.vim/undodir > /dev/null 2>&1
+  set undodir=~/.vim/undodir
   set undofile
 endif
 
