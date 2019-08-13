@@ -16,15 +16,11 @@ task :install => [:submodule_init, :submodules] do
   # install pip
   install_pip if RUBY_PLATFORM.downcase.include?("darwin")
 
-  # install RVM
-  install_rvm
-  install_rvm_binstubs
-
   # this has all the runcoms from this directory.
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
   install_files(Dir.glob('irb/*')) if want_to_install?('irb/pry configs (more colorful)')
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
-  install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config (better js/ruby support)')
+  install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config')
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
   if want_to_install?('vim configuration (highly recommended)')
@@ -151,25 +147,6 @@ def run_bundle_config
   puts "Configuring Bundlers for parallel gem installation"
   puts "======================================================"
   run %{ bundle config --global jobs #{bundler_jobs} }
-  puts
-end
-
-def install_rvm
-  puts "======================================================"
-  puts "Installing RVM"
-  puts "======================================================"
-  run %{ curl -L get.rvm.io | bash }
-  run %{ source ~/.rvm/scripts/rvm }
-  puts
-end
-
-def install_rvm_binstubs
-  puts "======================================================"
-  puts "Installing RVM Bundler support. Never have to type"
-  puts "bundle exec again! Please use bundle --binstubs and RVM"
-  puts "will automatically use those bins after cd'ing into dir."
-  puts "======================================================"
-  run %{ chmod +x $rvm_path/hooks/after_cd_bundler }
   puts
 end
 
