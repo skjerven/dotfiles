@@ -46,10 +46,21 @@ zstyle ':prezto:load' pmodule \
   'history-substring-search' \
   'prompt' \
   'fasd' \
+  'fzf' \
   'rsync' \
-  'ruby' \
-  'python' \
-  'thefuck'
+  'alias-tips' \
+  'thefuck' \
+  'contrib-clipboard' \
+  'enhancd'
+#  'ruby' \
+#  'python' \
+
+
+#
+# Alias tips
+#
+# Plugin to help recall shell aliases
+zstyle ':prezto:module:alias-tips' text 'Alias tip: '
 
 
 #
@@ -87,6 +98,42 @@ zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Enable prompt context
 zstyle ':prezto:module:editor' ps-context 'yes    '
+
+
+#
+# Enhancd
+#
+# Specify list of one or more visual filters
+zstyle ':prezto:module:enhancd' command 'fzf:fzy:peco'
+
+# Specify the commannd to invoke enhancd
+zstyle ':prezto:module:enhancd' command 'cd'
+
+# Set whether or not to show pull path for ..
+zstyle ':prezto:module:enhancd' show-fullpath 'ENHANCD_DOT_SHOW_FULLPATH'
+
+
+#
+# Fzf
+#
+# Use keybindings
+zstyle ':prezto:module:fzf' key-bindings 'yes'
+
+# Use completion
+zstyle ':prezto:module:fzf' completion 'yes'
+
+# Set height of the fzf results (comment for full screen)
+zstyle ':prezto:module:fzf' height '30%'
+
+# Open fzf results in a tmux pane (if using tmux)
+zstyle ':prezto:module:fzf' tmux 'yes'
+
+# Set colorscheme
+# A list of available colorschemes is available in color.zsh
+# To add more color schemes of your own, consult
+# https://github.com/junegunn/fzf/wiki/Color-schemes and add values to the
+# color.zsh file accordingly
+zstyle ':prezto:module:fzf' colorscheme 'Solarized Dark'
 
 
 #
