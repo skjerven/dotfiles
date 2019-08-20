@@ -131,3 +131,14 @@ set smartcase       " ...unless we type a capital
 
 " ================ Custom Settings ========================
 so ~/.yadr/vim/settings.vim
+
+" ================= Host specific config ==================
+" check for the existence of a host-specific vimrc file and source it
+" by example: if your host is named 'andoria', this will source
+" ~/scripts/vim/vimrc-andoria if it exists
+let hostfile=$HOME.'/.vim/vimrc-'.hostname()
+if filereadable(hostfile)
+     exe 'source ' . hostfile
+endif
+
+" vim: fdm=marker fdl=0

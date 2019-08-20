@@ -16,7 +16,7 @@ zstyle ':prezto:*:*' case-sensitive 'no'
 zstyle ':prezto:*:*' color 'yes'
 
 # Set the Zsh modules to load (man zshmodules).
-# zstyle ':prezto:load' zmodule 'attr' 'stat'
+zstyle ':prezto:load' zmodule 'attr' 'stat'
 
 # Set the Zsh functions to load (man zshcontrib).
 zstyle ':prezto:load' zfunction 'zargs' 'zmv'
@@ -97,20 +97,20 @@ zstyle ':prezto:module:editor' key-bindings 'vi'
 zstyle ':prezto:module:editor' dot-expansion 'yes'
 
 # Enable prompt context
-zstyle ':prezto:module:editor' ps-context 'yes    '
+zstyle ':prezto:module:editor' ps-context 'yes'
 
 
 #
 # Enhancd
 #
 # Specify list of one or more visual filters
-zstyle ':prezto:module:enhancd' command 'fzf:fzy:peco'
+zstyle ':prezto:module:enhancd' command 'fzf'
 
 # Specify the commannd to invoke enhancd
 zstyle ':prezto:module:enhancd' command 'cd'
 
 # Set whether or not to show pull path for ..
-zstyle ':prezto:module:enhancd' show-fullpath 'ENHANCD_DOT_SHOW_FULLPATH'
+#zstyle ':prezto:module:enhancd' show-fullpath 'ENHANCD_DOT_SHOW_FULLPATH'
 
 
 #
@@ -177,7 +177,7 @@ zstyle ':prezto:module:history-substring-search' globbing-flags ''
 #
 
 # Change keyword used by mand to open man pages in Dash
-zstyle ':prezto:module:osx:man' dash-keyword 'keyword'
+zstyle ':prezto:module:osx:man' dash-keyword 'dash'
 
 
 #
@@ -300,7 +300,7 @@ zstyle ':prezto:module:terminal:window-title' format '%n@%m: %s'
 zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 
 # Set the terminal multiplexer title format.
-# zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
+zstyle ':prezto:module:terminal:multiplexer-title' format '%s'
 
 
 #
@@ -308,13 +308,13 @@ zstyle ':prezto:module:terminal:tab-title' format '%m: %s'
 #
 
 # Auto start a session when Zsh is launched in a local terminal.
-#zstyle ':prezto:module:tmux:auto-start' local 'yes'
+zstyle ':prezto:module:tmux:auto-start' local 'yes'
 
 # Auto start a session when Zsh is launched in a SSH connection.
 zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 
 # Integrate with iTerm2.
-zstyle ':prezto:module:tmux:iterm' integrate 'yes'
+zstyle ':prezto:module:tmux:iterm' integrate 'no'
 
 # Set the default session name:
 # zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'

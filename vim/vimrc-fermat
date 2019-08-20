@@ -1,0 +1,4 @@
+" Set shell to work around terminal suspending when using
+" tmux-navigator.  Shell is different depending on host
+" https://github.com/christoomey/vim-tmux-navigator/issues/97
+set shell=/usr/local/bin/zsh\ -l
