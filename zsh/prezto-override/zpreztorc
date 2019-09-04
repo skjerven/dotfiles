@@ -317,4 +317,4 @@ zstyle ':prezto:module:tmux:auto-start' remote 'yes'
 zstyle ':prezto:module:tmux:iterm' integrate 'no'
 
 # Set the default session name:
-# zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
+#zstyle ':prezto:module:tmux:session' name 'YOUR DEFAULT SESSION NAME'
