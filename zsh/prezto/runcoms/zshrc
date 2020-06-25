@@ -14,4 +14,3 @@ fi
 for config_file ($HOME/.yadr/zsh/*.zsh) source $config_file
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-

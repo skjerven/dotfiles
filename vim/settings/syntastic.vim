@@ -31,6 +31,7 @@ if !exists("g:syntastic_ruby_exec")
 endif
 
 let g:syntastic_c_checkers = ['make', 'splint', 'cppcheck']
+let g:syntastic_cloudformation_checkers = ['cfn_lint']
 let g:syntastic_cpp_checkers = ['']
 let g:syntastic_cmake_checkers = ['']
 let g:syntastic_cuda_checkers = ['']
