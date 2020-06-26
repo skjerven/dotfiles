@@ -11,7 +11,7 @@ if is_osx; then
 
   #Homebrew casks
   echo "Updating Homebrew casks"
-  brew cu -a --cleanup
+  cask upgrade
   echo ""
 fi
 }
