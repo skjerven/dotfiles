@@ -1,4 +1,12 @@
 #
+# File handlling
+#
+* text=auto
+*.php text
+*.png binary
+*.jpg binary
+
+#
 # Merge strategies
 #
 
