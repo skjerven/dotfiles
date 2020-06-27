@@ -1,0 +1,12 @@
+#
+# Merge strategies
+#
+
+.gitconfig                      merge=ours
+.gitmodules                     merge=ours
+git/gitignore                   merge=ours
+git/gitconfig                   merge=ours
+tmux/tmux.conf                  merge=ours
+vimrc                           merge=ours
+zsh/prezto                      merge=ours
+zsh/prezto-override/zpreztorc   merge=ours
