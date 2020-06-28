@@ -114,7 +114,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = ~/.gitignore
+  excludesfile = /Users/bsskjerv/.gitignore
 [advice]
   statusHints = false
 [diff]
@@ -129,4 +129,4 @@
 [include]
   path = .gitconfig.user
 [pull]
-	ff = only
+  ff = only
