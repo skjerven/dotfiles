@@ -196,7 +196,7 @@ zstyle ':prezto:module:osx:man' dash-keyword 'dash'
 zstyle ':prezto:module:prompt' pwd-length 'short'
 
 # Tell prezto we can manage this prompt
-zstyle 'prezto:module:prompt' managed 'yes'
+zstyle ':prezto:module:prompt' managed 'yes'
 
 
 #

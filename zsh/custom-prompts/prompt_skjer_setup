@@ -67,7 +67,7 @@ function prompt_skjer_precmd {
   prompt_skjer_pwd
 
   # Define prompts
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${ruby_info[version]}'
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${ruby_info[version]} ${aws_info[profile]} '
 
   # Kill the old process of slow commands if it is still running.
   if (( _prompt_skjer_precmd_async_pid > 0 )); then
@@ -77,6 +77,11 @@ function prompt_skjer_precmd {
   # Get ruby information
   if (( $+functions[ruby-info] )); then
     ruby-info
+  fi
+
+  # Get aws profile information
+  if (( $+functions[aws-info] )); then
+    aws-info
   fi
 
   # Check for virtualenv
@@ -132,10 +137,13 @@ function prompt_skjer_setup {
     'status' '$(coalesce "%b" "%p" "%c")%c%s%A%B%S%a%d%m%r%U%u'
 
   # virtualenv
-  zstyle ':prezto:module:python:info:virtualenv' format '[virtualenv %v]'
+  zstyle ':prezto:module:python:info:virtualenv' format '[venv %v]'
 
   # ruby info (rvm, rbenv)
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
+
+  # aws profile info
+  zstyle ':prezto:module:aws:info:profile' format '%F{208}( %p)'
 
   # Define prompts
   PROMPT='${_prompt_skjer_host} %F{112}${_prompt_skjer_pwd}%(!. %B%F{160}#%f%b.)${editor_info[keymap]} '

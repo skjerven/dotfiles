@@ -1,0 +1,26 @@
+#
+# Exposes information about the AWS environment via the $aws_info associative
+# array.
+#
+
+# function aws-info {
+
+local profile
+local profile_format
+local profile_formatted
+
+# Clean up previous $aws_info.
+unset aws_info
+typeset -gA aws_info
+
+# Grab formatting for anything we might have to do
+zstyle -s ':prezto:module:aws:info:profile' format 'profile_format'
+
+if [[ -n "$profile_format" ]]; then
+  if [[ -n "$AWS_PROFILE" ]]; then
+    zformat -f profile_formatted "$profile_format" "p:${AWS_PROFILE:t}"
+    aws_info[profile]="$profile_formatted"
+  fi
+fi
+
+# }

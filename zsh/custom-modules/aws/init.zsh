@@ -53,12 +53,6 @@ function _aws_profiles() {
 }
 compctl -K _aws_profiles asp aws_change_access_key
 
-# AWS prompt
-function aws_prompt_info() {
-  [[ -z $AWS_PROFILE ]] && return
-  echo " ${AWS_PROFILE}"
-}
-
 
 # Load awscli completions
 
