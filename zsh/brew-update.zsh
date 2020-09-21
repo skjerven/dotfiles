@@ -11,7 +11,7 @@ if is_osx; then
 
   #Homebrew casks
   echo "Updating Homebrew casks"
-  cask upgrade
+  brew upgrade --cask
   echo ""
 fi
 }
