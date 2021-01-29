@@ -24,28 +24,47 @@ Host github.com
     IdentityFile ~/.ssh/github_rsa
     IdentitiesOnly yes
 
-Host euler nas
-    Hostname euler.home.skjerven.io
+Host swarm-node1
+    Hostname swarm-node1.skjerven.io
+    User admin-local
+    IdentityFile ~/.ssh/swarm_rsa
+    IdentitiesOnly yes
+
+Host swarm-node2
+    Hostname swarm-node2.skjerven.io
+    User admin-local
+    IdentityFile ~/.ssh/swarm_rsa
+    IdentitiesOnly yes
+
+Host swarm-node3
+    Hostname swarm-node3.skjerven.io
+    User admin-local
+    IdentityFile ~/.ssh/swarm_rsa
+    IdentitiesOnly yes
+
+Host euler nas1
+    Hostname euler.skjerven.io
     User nas-admin
     Port 2022
     IdentityFile ~/.ssh/euler_rsa
     IdentitiesOnly yes
 
-Host klein
-    Hostname klein.home.skjerven.io
+Host ada nas2
+    Hostname ada.skjerven.io
+    User nas-admin
+    Port 2022
+    IdentityFile ~/.ssh/ada_rsa
+    IdentitiesOnly yes
+
+Host klein qnap
+    Hostname klein.skjerven.io
     User nas-admin
     Port 2022
     IdentityFile ~/.ssh/klein_rsa
     IdentitiesOnly yes
 
-Host newton kube
-    Hostname newton.home.skjerven.io
-    User kube-admin
-    IdentityFile ~/.ssh/newton_rsa
-    IdentitiesOnly yes
-
 Host pihole
-    Hostname pi.hole
+    Hostname pi-hole.skjerven.io
     User pihole
     IdentityFile ~/.ssh/pihole_rsa
     IdentitiesOnly yes
