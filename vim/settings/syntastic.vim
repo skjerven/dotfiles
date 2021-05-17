@@ -5,6 +5,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_aggregate_errors = 1
 
 "mark syntax errors with :signs
 let g:syntastic_enable_signs=1
@@ -39,7 +40,6 @@ let g:syntastic_dockerfile_checkers = ['']
 let g:syntastic_fortran_checkers = ['']
 let g:syntastic_java_checkers = ['']
 let g:syntastic_json_checkers = ['']
-let g:syntastic_julia_checkers = ['']
 let g:syntastic_lua_checkers = ['']
 let g:syntastic_matlab_checkers = ['']
 let g:syntastic_perl_checkers = ['']
