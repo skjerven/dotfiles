@@ -67,7 +67,8 @@ function prompt_skjer_precmd {
   prompt_skjer_pwd
 
   # Define prompts
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${ruby_info[version]} ${aws_info[profile]} '
+  #RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${ruby_info[version]} ${aws_info[profile]} '
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${aws_info[profile]} '
 
   # Kill the old process of slow commands if it is still running.
   if (( _prompt_skjer_precmd_async_pid > 0 )); then
