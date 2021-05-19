@@ -55,8 +55,8 @@ zstyle ':prezto:load' pmodule \
   'clipboard' \
   'enhancd' \
   'aws' \
-  'python'
-#  'ruby'
+  'python' \
+  'ruby'
 
 
 #
