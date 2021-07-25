@@ -78,6 +78,7 @@ set expandtab
 nnoremap p p=`]<C-o>
 nnoremap P P=`]<C-o>
 
+filetype off
 filetype plugin on
 filetype indent on
 
