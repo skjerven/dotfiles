@@ -2,7 +2,7 @@
 # See the README for examples.
 [user]
 	name = Brian Skjerven
-	email = bsskjerv@amazon.co.uk
+	email = brian.skjerven@gmail.com
 [color]
   ui = true
 [color "branch"]
