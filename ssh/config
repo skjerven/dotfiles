@@ -33,6 +33,12 @@ Host ssh.gitlab.aws.dev
     User git
     IdentityFile ~/.ssh/aws_rsa
 
+Host grocy
+    Hostname grocy.skjerven.io
+    User admin-local
+    IdentityFile ~/.ssh/grocy_rsa
+    IdentitiesOnly yes
+
 Host ssh.dev.azure.com
     User git
     IdentityFile ~/.ssh/aws_rsa
@@ -69,7 +75,7 @@ Host ada nas2
     IdentityFile ~/.ssh/ada_rsa
     IdentitiesOnly yes
 
-Host klein qnap
+Host klein qnap nas3
     Hostname klein.skjerven.io
     User nas-admin
     Port 2022
