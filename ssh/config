@@ -83,7 +83,7 @@ Host klein qnap nas3
     IdentitiesOnly yes
 
 Host pihole
-    Hostname pi-hole.skjerven.io
+    Hostname pihole.skjerven.io
     User pihole
     IdentityFile ~/.ssh/pihole_rsa
     IdentitiesOnly yes
