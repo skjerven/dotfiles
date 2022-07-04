@@ -96,6 +96,7 @@ fi
 # Load virtualenvwrapper into the shell session, if pre-requisites are met
 # and unless explicitly requested not to
 if (( $+VIRTUALENVWRAPPER_VIRTUALENV || $+commands[virtualenv] )) \
+      && (($+commands[pyenv])) \
       && zstyle -T ':prezto:module:python:virtualenv' initialize ; then
   # Set the directory where virtual environments are stored.
   export WORKON_HOME="${WORKON_HOME:-$HOME/.virtualenvs}"
@@ -123,9 +124,9 @@ if (( $+VIRTUALENVWRAPPER_VIRTUALENV || $+commands[virtualenv] )) \
   if (( $pyenv_plugins[(i)virtualenvwrapper(_lazy|)] <= $#pyenv_plugins )); then
     pyenv "$pyenv_plugins[(R)virtualenvwrapper(_lazy|)]"
   fi
-  
+
   unset pyenv_plugins
-  
+
 else
   # Fallback to 'virtualenvwrapper' without 'pyenv' wrapper if 'python' is
   # available in '$path'.
