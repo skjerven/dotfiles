@@ -203,7 +203,10 @@ zstyle ':prezto:module:prompt' managed 'yes'
 # Python
 #
 
-# Auto switch the Python virtualenv on directory change.
+# Enable/disable automatically initializing virtualenv
+zstyle ':prezto:module:python:virtualenv' initialize 'yes'
+
+# Auto switch the Python virtualenv on directory change
 zstyle ':prezto:module:python:virtualenv' auto-switch 'yes'
 
 
