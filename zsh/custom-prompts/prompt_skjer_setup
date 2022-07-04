@@ -138,7 +138,7 @@ function prompt_skjer_setup {
     'status' '$(coalesce "%b" "%p" "%c")%c%s%A%B%S%a%d%m%r%U%u'
 
   # virtualenv
-  zstyle ':prezto:module:python:info:virtualenv' format '[venv %v]'
+  zstyle ':prezto:module:python:info:virtualenv' format '[%v]'
 
   # ruby info (rvm, rbenv)
   zstyle ':prezto:module:ruby:info:version' format '[%v]'
