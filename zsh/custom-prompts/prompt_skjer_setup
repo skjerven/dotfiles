@@ -67,8 +67,7 @@ function prompt_skjer_precmd {
   prompt_skjer_pwd
 
   # Define prompts
-  #RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${ruby_info[version]} ${aws_info[profile]} '
-  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎ %f)${VIM:+" %B%F{6}V%f%b"}%F{030}${python_info[virtualenv]}%F{030} ${aws_info[profile]} '
+  RPROMPT='${editor_info[overwrite]}%(?:: %F{1}⏎%f)${VIM:+" %B%F{6}V%f%b"} ${python_info[virtualenv]} ${aws_info[profile]}'
 
   # Kill the old process of slow commands if it is still running.
   if (( _prompt_skjer_precmd_async_pid > 0 )); then
@@ -119,14 +118,13 @@ function prompt_skjer_setup {
   zstyle ':prezto:module:editor:info:keymap:alternate' format ' %B%F{100}❮%F{130}❮%F{124}❮%f%b'
 
   #set git-info parameters
-  BRANCH="\u0020\ue0a0\u0020"
   zstyle ':prezto:module:git:info' verbose 'yes'
   zstyle ':prezto:module:git:info:action' format '%F{7}:%f%%B%F{9}%s%f%%b'
   zstyle ':prezto:module:git:info:added' format ' %%B%F{100}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{057}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{057}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format ' %F{043}$BRANCH%F{043}%b%f'
-  zstyle ':prezto:module:git:info:commit' format ' %F{043}➦ %.7c%f'
+  zstyle ':prezto:module:git:info:branch' format ' %F{043} %F{043}%b%f'
+  zstyle ':prezto:module:git:info:commit' format ' %F{043}➦%.7c%f'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{160}✖%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{033}✱%f%%b'
   zstyle ':prezto:module:git:info:position' format ' %F{red}(%p)%f'
@@ -138,17 +136,17 @@ function prompt_skjer_setup {
     'status' '$(coalesce "%b" "%p" "%c")%c%s%A%B%S%a%d%m%r%U%u'
 
   # virtualenv
-  zstyle ':prezto:module:python:info:virtualenv' format '[%v]'
+  zstyle ':prezto:module:python:info:virtualenv' format '%F{226}[ %v]'
 
   # ruby info (rvm, rbenv)
-  zstyle ':prezto:module:ruby:info:version' format '[%v]'
+  zstyle ':prezto:module:ruby:info:version' format '%F{160}[ %v]'
 
   # aws profile info
   zstyle ':prezto:module:aws:info:profile' format '%F{208}( %p)'
 
   # Define prompts
   PROMPT='${_prompt_skjer_host} %F{112}${_prompt_skjer_pwd}%(!. %B%F{160}#%f%b.)${editor_info[keymap]} '
-  RPROMPT=''
+  #RPROMPT=''
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
