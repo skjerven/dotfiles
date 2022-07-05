@@ -4,6 +4,7 @@ Bundle "itchyny/lightline.vim"
 Bundle "tmux-plugins/vim-tmux"
 Bundle "morhetz/gruvbox"
 Bundle "xsunsmile/showmarks.git"
+Bundle "ryanoasis/vim-devicons"
 
 " Required for Gblame in terminal vim
 Bundle "godlygeek/csapprox.git"
