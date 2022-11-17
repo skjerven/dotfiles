@@ -49,18 +49,6 @@ Host homelab
     IdentityFile ~/.ssh/homelab_rsa
     IdentitiesOnly yes
 
-Host swarm-node2
-    Hostname swarm-node2.skjerven.io
-    User admin-local
-    IdentityFile ~/.ssh/swarm_rsa
-    IdentitiesOnly yes
-
-Host swarm-node3
-    Hostname swarm-node3.skjerven.io
-    User admin-local
-    IdentityFile ~/.ssh/swarm_rsa
-    IdentitiesOnly yes
-
 Host euler nas1
     Hostname euler.skjerven.io
     User nas-admin
