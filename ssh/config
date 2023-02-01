@@ -33,16 +33,6 @@ Host ssh.gitlab.aws.dev
     User git
     IdentityFile ~/.ssh/aws_rsa
 
-Host grocy
-    Hostname grocy.skjerven.io
-    User admin-local
-    IdentityFile ~/.ssh/grocy_rsa
-    IdentitiesOnly yes
-
-Host ssh.dev.azure.com
-    User git
-    IdentityFile ~/.ssh/aws_rsa
-
 Host homelab
     Hostname homelab.skjerven.io
     User home-admin
