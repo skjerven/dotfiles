@@ -14,6 +14,9 @@ pathPrepend() {
   fi
 }
 
+# Add Homebrew location to path (different from Intel based location)
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Remove duplicate entries from PATH:
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
