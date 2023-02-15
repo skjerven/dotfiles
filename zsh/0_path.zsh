@@ -17,6 +17,10 @@ pathPrepend() {
 # Remove duplicate entries from PATH:
 PATH=$(echo "$PATH" | awk -v RS=':' -v ORS=":" '!a[$1]++{if (NR > 1) printf ORS; printf $a[$1]}')
 
+# Add M1 specific Homebrew location
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+pathPrepend "/opt/homebrew/opt/python@3.11/libexec/bin"
 pathAppend "$HOME/.yadr/bin"
 pathAppend "$HOME/.yadr/bin/yadr"
 pathAppend "$HOME/.rbenv/bin"
