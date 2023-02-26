@@ -31,7 +31,11 @@ Host gitlab.com
 
 Host ssh.gitlab.aws.dev
     User git
-    IdentityFile ~/.ssh/aws_rsa
+    IdentityFile ~/.ssh/aws_gitlab_ecdsa
+    CertificateFile ~/.ssh/aws_gitlab_ecdsa-cert.pub
+    IdentitiesOnly yes
+    ProxyCommand none
+    ProxyJump none
 
 Host homelab
     Hostname homelab.skjerven.io

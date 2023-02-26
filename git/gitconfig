@@ -130,3 +130,5 @@
   path = .gitconfig.user
 [pull]
   ff = only
+[init]
+	defaultBranch = main
