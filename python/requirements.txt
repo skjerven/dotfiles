@@ -1,2 +1,3 @@
+awscli
 aws-parallelcluster
 git-remote-codecommit
