@@ -19,6 +19,7 @@ pmodload 'helper'
 function _validated_source() {
     local target_path="$1"
 
+<<<<<<< HEAD
     if [[ "$target_path" == *'..'* ]]; then
         (>&2 printf "AUTOSWITCH WARNING: ")
         (>&2 printf "target virtualenv contains invalid characters\n")
@@ -419,6 +420,74 @@ function _autoswitch_startup() {
         add-zsh-hook -D precmd _autoswitch_startup
         enable_autoswitch_virtualenv
         check_venv
+=======
+  # Ensure manually installed pyenv is added to path when present.
+  [[ -s $local_pyenv ]] && path=($local_pyenv:h $path)
+
+  # pyenv 2+ requires shims to be added to path before being initialized.
+  autoload -Uz is-at-least
+  if is-at-least 2 ${"$(pyenv --version 2>&1)"[(w)2]}; then
+    eval "$(pyenv init --path zsh)"
+  fi
+
+  eval "$(pyenv init - zsh)"
+
+# Prepend PEP 370 per user site packages directory, which defaults to
+# ~/Library/Python on macOS and ~/.local elsewhere, to PATH. The
+# path can be overridden using PYTHONUSERBASE.
+else
+  if [[ -n "$PYTHONUSERBASE" ]]; then
+    path=($PYTHONUSERBASE/bin(N) $path)
+  elif is-darwin; then
+    path=($HOME/Library/Python/*/bin(N) $path)
+  else
+    # This is subject to change.
+    path=($HOME/.local/bin(N) $path)
+  fi
+fi
+
+unset local_pyenv
+
+# Return if requirements are not found.
+if (( ! $+commands[(i)python[0-9.]#] && ! $+functions[pyenv] && ! $+commands[conda] )); then
+  return 1
+fi
+
+function _python-workon-cwd {
+  # Check if this is a Git repo.
+  local GIT_REPO_ROOT="$(git rev-parse --show-toplevel 2> /dev/null)"
+  # Get absolute path, resolving symlinks.
+  local PROJECT_ROOT="$PWD:A"
+  while [[ "$PROJECT_ROOT" != "/" && ! -e "$PROJECT_ROOT/.venv" \
+        && ! -d "$PROJECT_ROOT/.git"  && "$PROJECT_ROOT" != "$GIT_REPO_ROOT" ]]; do
+    PROJECT_ROOT="$PROJECT_ROOT:h"
+  done
+  if [[ $PROJECT_ROOT == "/" ]]; then
+    PROJECT_ROOT="."
+  fi
+  # Check for virtualenv name override.
+  local ENV_NAME=""
+  if [[ -f "$PROJECT_ROOT/.venv" ]]; then
+    ENV_NAME="$(<$PROJECT_ROOT/.venv)"
+  elif [[ -f "$PROJECT_ROOT/.venv/bin/activate" ]]; then
+    ENV_NAME="$PROJECT_ROOT/.venv"
+  elif [[ $PROJECT_ROOT != "." ]]; then
+    ENV_NAME="$PROJECT_ROOT:t"
+  fi
+  if [[ -n $CD_VIRTUAL_ENV && "$ENV_NAME" != "$CD_VIRTUAL_ENV" ]]; then
+    # We've just left the repo, deactivate the environment.
+    # Note: this only happens if the virtualenv was activated automatically.
+    deactivate && unset CD_VIRTUAL_ENV
+  fi
+  if [[ $ENV_NAME != "" ]]; then
+    # Activate the environment only if it is not already active.
+    if [[ "$VIRTUAL_ENV" != "$WORKON_HOME/$ENV_NAME" ]]; then
+      if [[ -n "$WORKON_HOME" && -e "$WORKON_HOME/$ENV_NAME/bin/activate" ]]; then
+        workon "$ENV_NAME" && export CD_VIRTUAL_ENV="$ENV_NAME"
+      elif [[ -e "$ENV_NAME/bin/activate" ]]; then
+        source $ENV_NAME/bin/activate && export CD_VIRTUAL_ENV="$ENV_NAME"
+      fi
+>>>>>>> c47b0b89ec0bc261bf0966af8277b921a293cd0f
     fi
 }
 
@@ -465,8 +534,8 @@ if (( $+VIRTUALENVWRAPPER_VIRTUALENV || $+commands[virtualenv] )) \
 
   if [[ $pyenv_virtualenvwrapper_plugin_found != "true" ]]; then
     # Fallback to standard 'virtualenvwrapper' if 'python' is available in '$path'.
-    if (( ! $+VIRTUALENVWRAPPER_PYTHON )) && (( $#commands[(i)python[23]#] )); then
-      VIRTUALENVWRAPPER_PYTHON=$commands[(i)python[23]#]
+    if (( ! $+VIRTUALENVWRAPPER_PYTHON )) && (( $+commands[(i)python[0-9.]#] )); then
+      VIRTUALENVWRAPPER_PYTHON=$commands[(i)python[0-9.]#]
     fi
 
     virtualenvwrapper_sources=(
