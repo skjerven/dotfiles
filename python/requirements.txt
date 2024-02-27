@@ -1,3 +1,9 @@
-awscli
+ansible
+ansible-lint
+autopep8
 aws-parallelcluster
+awscli
+cffi
+cfn-lint
 git-remote-codecommit
+grip

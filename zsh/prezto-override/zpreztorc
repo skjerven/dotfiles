@@ -34,6 +34,7 @@ zstyle ':prezto:load' pmodule \
   'directory' \
   'gnu-utility' \
   'utility' \
+  'python' \
   'completion' \
   'archive' \
   'command-not-found' \
@@ -55,7 +56,6 @@ zstyle ':prezto:load' pmodule \
   'clipboard' \
   'enhancd' \
   'aws' \
-  'python' \
   'ruby'
 
 

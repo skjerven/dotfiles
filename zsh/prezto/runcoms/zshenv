@@ -11,6 +11,7 @@ if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; t
 fi
 
 # Set up virtualenv environment
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Projects
+export WORKON_HOME=${HOME}/.virtualenvs
+export PROJECT_HOME=${HOME}/Projects
 export VIRTUALENVWRAPPER_VIRUTALENV_ARGS='--no-site-packages'
+export VIRTUALENVWRAPPER_PYTHON=/opt/homebrew/opt/python@3.11/libexec/bin/python
