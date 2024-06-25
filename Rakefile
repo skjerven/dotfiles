@@ -4,9 +4,8 @@ require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
 desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
-  puts
   puts "======================================================"
-  puts "Welcome to YADR Installation."
+  puts "Welcome to YADR Installation"
   puts "======================================================"
   puts
 
@@ -17,6 +16,9 @@ task :install => [:submodule_init, :submodules] do
   install_pip if RUBY_PLATFORM.downcase.include?("darwin")
 
   # this has all the runcoms from this directory.
+  puts "======================================================"
+  puts "Installing files..."
+  puts "======================================================"
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config')
@@ -28,6 +30,8 @@ task :install => [:submodule_init, :submodules] do
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
   end
+  puts
+
 
   # prezto zsh enhancements
   Rake::Task["install_prezto"].execute
@@ -76,7 +80,6 @@ end
 desc "Init and update submodules."
 task :submodules do
   unless ENV["SKIP_SUBMODULES"]
-    puts
     puts "======================================================"
     puts "Downloading YADR submodules...please wait"
     puts "======================================================"
@@ -167,6 +170,7 @@ def install_homebrew
     puts "already installed, this will do nothing."
     puts "======================================================"
     run %{ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" }
+    puts
   end
 
   puts
@@ -192,6 +196,7 @@ def install_pip
   puts "======================================================"
   run %{ $HOME/.yadr/bin/pip_install }
   puts
+  puts
 end
 
 def install_prompt
@@ -201,6 +206,7 @@ def install_prompt
   run %{ ln -s $HOME/.yadr/shell/prompt/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
   run %{ ln -s $HOME/.yadr/shell/scripts/* ~/.zsh.before }
   puts
+  puts
 end
 
 def install_fonts
@@ -209,6 +215,7 @@ def install_fonts
   puts "======================================================"
   run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
   run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
+  puts
   puts
 end
 
@@ -220,7 +227,7 @@ def install_dircolors
   run %{ git clone https://github.com/seebi/dircolors-solarized.git $HOME/Repositories/dircolors-solarized }
   run %{ ln -s ~/.dir_colors $HOME/Repositories/dircolors-solarized/dircolors.256dark}
   puts
-
+  puts
 end
 
 def install_term_theme
@@ -261,6 +268,8 @@ def install_term_theme
   else
     apply_theme_to_iterm_profile_idx profiles.index(selected), color_scheme_file
   end
+  puts
+  puts
 end
 
 def iTerm_available_themes
@@ -292,14 +301,14 @@ def ask(message, values)
 end
 
 def install_ssh_config
-  puts
   puts "Setting up ssh config file"
   run %{ ln -nfs "$HOME/.yadr/ssh/config" "$HOME/.ssh/config" }
   run %{ chmod 600 "$HOME/.ssh/config" }
+  puts
+  puts
 end
 
 def install_prezto
-  puts
   puts "======================================================"
   puts "Installing Prezto (ZSH Enhancements)..."
   puts "======================================================"
