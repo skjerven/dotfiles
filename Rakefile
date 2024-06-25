@@ -249,7 +249,7 @@ def install_iterm_config
   puts "======================================================"
   run %{ cp -f $HOME/.yadr/iTerm2/com.googlecode.iterm2.plist $HOME/Library/Preferences }
   run %{ curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash }
-  run %{ bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh)" }
+  run %{ bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash)" }
   run puts
 end
 
