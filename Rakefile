@@ -7,7 +7,7 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts "Welcome to YADR Installation"
   puts "======================================================"
-  puts
+  puts ""
 
   # install Homebrew
   install_homebrew if RUBY_PLATFORM.downcase.include?("darwin")
@@ -17,8 +17,9 @@ task :install => [:submodule_init, :submodules] do
 
   # this has all the runcoms from this directory.
   puts "======================================================"
-  puts "Installing files..."
+  puts "Installing configuration files..."
   puts "======================================================"
+  puts ""
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config')
@@ -26,12 +27,17 @@ task :install => [:submodule_init, :submodules] do
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
   install_files(Dir.glob('editor/*')) if want_to_install?('editor config')
   install_files(Dir.glob('yaml/*')) if want_to_install?('yamllint config')
+  puts
+
+  puts "======================================================"
+  puts "Setting up VIM configuration..."
+  puts "======================================================"
+  puts ""
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
   end
-  puts
-
+  puts ""
 
   # prezto zsh enhancements
   Rake::Task["install_prezto"].execute
@@ -89,7 +95,7 @@ task :submodules do
       git submodule update --recursive
       git clean -df
     }
-    puts
+    puts ""
   end
 end
 
@@ -118,7 +124,6 @@ task :install_vundle do
   puts "Installing and updating vundles."
   puts "The installer will now proceed to run PluginInstall to install vundles."
   puts "======================================================"
-
   puts ""
 
   vundle_path = File.join('vim','bundle', 'vundle')
@@ -130,6 +135,7 @@ task :install_vundle do
   end
 
   Vundle::update_vundle
+  puts
 end
 
 task :default => 'install'
@@ -159,7 +165,7 @@ def run_bundle_config
   puts "Configuring Bundlers for parallel gem installation"
   puts "======================================================"
   run %{ bundle config --global jobs #{bundler_jobs} }
-  puts
+  puts ""
 end
 
 def install_homebrew
@@ -170,24 +176,21 @@ def install_homebrew
     puts "already installed, this will do nothing."
     puts "======================================================"
     run %{ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" }
-    puts
   end
 
-  puts
-  puts
+  puts ""
   puts "======================================================"
   puts "Updating Homebrew."
   puts "======================================================"
   run %{ brew update }
-  puts
-  puts
+  puts ""
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
   run %{ brew bundle --file $HOME/.yadr/Brewfile }
   run %{ brew doctor }
-  puts
-  puts
+  puts ""
+  puts ""
 end
 
 def install_pip
@@ -195,8 +198,8 @@ def install_pip
   puts "Installing Python packages via pip"
   puts "======================================================"
   run %{ $HOME/.yadr/bin/pip_install }
-  puts
-  puts
+  puts ""
+  puts ""
 end
 
 def install_prompt
@@ -205,8 +208,8 @@ def install_prompt
   puts "======================================================"
   run %{ ln -s $HOME/.yadr/shell/prompt/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
   run %{ ln -s $HOME/.yadr/shell/scripts/* ~/.zsh.before }
-  puts
-  puts
+  puts ""
+  puts ""
 end
 
 def install_fonts
@@ -215,8 +218,8 @@ def install_fonts
   puts "======================================================"
   run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
   run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
-  puts
-  puts
+  puts ""
+  puts ""
 end
 
 def install_dircolors
@@ -225,9 +228,9 @@ def install_dircolors
   puts "======================================================"
   run %{ mkdir -p $HOME/Repositories/dircolors }
   run %{ git clone https://github.com/seebi/dircolors-solarized.git $HOME/Repositories/dircolors-solarized }
-  run %{ ln -s ~/.dir_colors $HOME/Repositories/dircolors-solarized/dircolors.256dark}
-  puts
-  puts
+  run %{ ln -s $HOME/Repositories/dircolors-solarized/dircolors.256dark ~/.dir_colors }
+  puts ""
+  puts ""
 end
 
 def install_term_theme
@@ -268,8 +271,8 @@ def install_term_theme
   else
     apply_theme_to_iterm_profile_idx profiles.index(selected), color_scheme_file
   end
-  puts
-  puts
+  puts ""
+  puts ""
 end
 
 def iTerm_available_themes
@@ -304,26 +307,26 @@ def install_ssh_config
   puts "Setting up ssh config file"
   run %{ ln -nfs "$HOME/.yadr/ssh/config" "$HOME/.ssh/config" }
   run %{ chmod 600 "$HOME/.ssh/config" }
-  puts
-  puts
+  puts ""
+  puts ""
 end
 
 def install_prezto
   puts "======================================================"
   puts "Installing Prezto (ZSH Enhancements)..."
   puts "======================================================"
-  puts
+  puts ""
 
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
 
   # The prezto runcoms are only going to be installed if zprezto has never been installed
   install_files(Dir.glob('zsh/prezto/runcoms/z*'), :symlink)
 
-  puts
+  puts ""
   puts "Overriding prezto ~/.zpreztorc with YADR's zpreztorc to enable additional modules..."
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto-override/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" }
 
-  puts
+  puts ""
   puts "Creating directories for your customizations"
   run %{ mkdir -p $HOME/.zsh.before }
   run %{ mkdir -p $HOME/.zsh.after }
@@ -343,13 +346,14 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
+  puts ""
 end
 
 def install_prezto_contrib
-  puts
   puts "Installing additonal Prezto modules..."
-
   run %{ git clone --recurse-submodules https://github.com/belak/prezto-contrib "$HOME/.yadr/zsh/prezto/contrib" }
+  puts ""
+  puts ""
 end
 
 def want_to_install? (section)
@@ -429,4 +433,6 @@ def success_msg(action)
   puts "  (_______\_____|\____|_|      "
   puts ""
   puts "YADR has been #{action}. Please restart your terminal and vim."
+  puts ""
+  puts ""
 end
