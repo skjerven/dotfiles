@@ -192,6 +192,7 @@ def install_prompt
   run %{ ln -s $HOME/.yadr/shell/prompt/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
   run %{ ln -s $HOME/.yadr/shell/scripts/* ~/.zsh.before }
   puts
+end
 
 def install_fonts
   puts "======================================================"
