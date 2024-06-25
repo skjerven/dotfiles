@@ -17,13 +17,48 @@ task :install => [:submodule_init, :submodules] do
   install_pip if RUBY_PLATFORM.downcase.include?("darwin")
 
   # this has all the runcoms from this directory.
+  puts
+  puts "======================================================"
+  puts "Installing git config"
+  puts "======================================================"
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
+
+  puts
+  puts "======================================================"
+  puts "Installing Ruby"
+  puts "======================================================"
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
+
+  puts
+  puts "======================================================"
+  puts "Installing ctags"
+  puts "======================================================"
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config')
+
+  puts
+  puts "======================================================"
+  puts "Installing tmux"
+  puts "======================================================"
   install_files(Dir.glob('tmux/*')) if want_to_install?('tmux config')
+
+  puts
+  puts "======================================================"
+  puts "Installing vimify"
+  puts "======================================================"
   install_files(Dir.glob('vimify/*')) if want_to_install?('vimification of command line tools')
+
+  puts
+  puts "======================================================"
+  puts "Installing editor config"
+  puts "======================================================"
   install_files(Dir.glob('editor/*')) if want_to_install?('editor config')
+
+  puts
+  puts "======================================================"
+  puts "Installing yamllint config"
+  puts "======================================================"
   install_files(Dir.glob('yaml/*')) if want_to_install?('yamllint config')
+
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
@@ -73,6 +108,7 @@ end
 desc "Init and update submodules."
 task :submodules do
   unless ENV["SKIP_SUBMODULES"]
+    puts
     puts "======================================================"
     puts "Downloading YADR submodules...please wait"
     puts "======================================================"
