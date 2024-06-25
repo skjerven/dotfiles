@@ -182,14 +182,14 @@ def install_homebrew
     puts "Installing Homebrew, the OSX package manager...If it's"
     puts "already installed, this will do nothing."
     puts "======================================================"
-    run %{ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" }
+    run %{ NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" }
   end
 
   puts ""
   puts "======================================================"
   puts "Updating Homebrew."
   puts "======================================================"
-  run %{ /opt/homebrew/bin/brew update }
+  run %{ brew update }
   puts ""
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
