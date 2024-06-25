@@ -27,7 +27,7 @@ task :install => [:submodule_init, :submodules] do
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
   end
-  
+
   # prezto zsh enhancements
   Rake::Task["install_prezto"].execute
   install_prompt
@@ -49,6 +49,9 @@ end
 task :install_prezto do
   if want_to_install?('zsh enhancements & prezto')
     install_prezto
+  end
+  if want_to_install?('zsh enhancements & prezto-contrib')
+    install_prezto_contrib
   end
 end
 
@@ -311,6 +314,13 @@ def install_prezto
       run %{ chsh -s /bin/zsh }
     end
   end
+end
+
+def install_prezto_contrib
+  puts
+  puts "Installing additonal Prezto modules..."
+
+  run %{ git clone --recurse-submodules https://github.com/belak/prezto-contrib "$HOME/.yadr/zsh/prezto/contrib" }
 end
 
 def want_to_install? (section)
