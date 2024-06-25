@@ -189,13 +189,13 @@ def install_homebrew
   puts "======================================================"
   puts "Updating Homebrew."
   puts "======================================================"
-  run %{ brew update }
+  run %{ /opt/homebrew/bin/brew update }
   puts ""
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{ brew bundle --file $HOME/.yadr/Brewfile }
-  run %{ brew doctor }
+  run %{ /opt/homenrew/bin/brew bundle --file $HOME/.yadr/Brewfile }
+  run %{ /opt/homenrew/bin/brew doctor }
   puts ""
   puts ""
 end
