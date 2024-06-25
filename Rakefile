@@ -216,8 +216,8 @@ def install_prompt
   puts "======================================================"
   puts "Installing custom ZSH prompt"
   puts "======================================================"
-  run %{ ln -s $HOME/.yadr/zsh/custom-prompts/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
-  run %{ ln -s $HOME/.yadr/shell/scripts/* ~/.zsh.before }
+  run %{ ln -nfs $HOME/.yadr/zsh/custom-prompts/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
+  run %{ ln -nfs $HOME/.yadr/shell/scripts/* ~/.zsh.before }
   puts ""
   puts ""
 end
@@ -238,7 +238,7 @@ def install_dircolors
   puts "======================================================"
   run %{ mkdir -p $HOME/Repositories/dircolors }
   run %{ git clone https://github.com/seebi/dircolors-solarized.git $HOME/Repositories/dircolors-solarized }
-  run %{ ln -s $HOME/Repositories/dircolors-solarized/dircolors.256dark ~/.dir_colors }
+  run %{ ln -nfs $HOME/Repositories/dircolors-solarized/dircolors.256dark ~/.dir_colors }
   puts ""
   puts ""
 end
@@ -249,6 +249,7 @@ def install_iterm_config
   puts "======================================================"
   run %{ cp -f $HOME/.yadr/iTerm2/com.googlecode.iterm2.plist $HOME/Library/Preferences }
   run %{ curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash }
+  run %{ bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh)" }
   run puts
 end
 
@@ -338,6 +339,7 @@ def install_prezto
   puts "======================================================"
 
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
+  puts
 
   # The prezto runcoms are only going to be installed if zprezto has never been installed
   install_files(Dir.glob('zsh/prezto/runcoms/z*'), :symlink)
