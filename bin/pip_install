@@ -3,34 +3,8 @@
 # Install Python packages via pip
 
 packages=(
-  numpy
-  scipy
-  cairocffi
-  coverage
-  cython
-  "ipython[all]"
-  jinja2
-  jupyter
-  matplotlib
-  mock
-  mpi4py
-  nltk
-  nose
-  pandas
-  pdb
-  pep8
-  pip-autoremove
-  pygments
-  pylint
-  pytables
-  pyzmq
-  pytest
-  q
-  snakeviz
-  sympy
-  tox
-  virtualenv
-  virtualenvwrapper
+  pip-upgrade-outdated
+  pipdeptree
 )
 
 function log() {
