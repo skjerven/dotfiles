@@ -56,8 +56,11 @@ task :install => [:submodule_init, :submodules] do
   # powerline fonts
   install_fonts
 
+  # iTerm2 configuration
+  install_iterm_config
+
   # iTerm2 solarized theme
-  install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
+  install_iterm_theme if RUBY_PLATFORM.downcase.include?("darwin")
 
   # dircolors
   install_dircolors if RUBY_PLATFORM.downcase.include?("darwin")
@@ -213,7 +216,7 @@ def install_prompt
   puts "======================================================"
   puts "Installing custom ZSH prompt"
   puts "======================================================"
-  run %{ ln -s $HOME/.yadr/shell/prompt/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
+  run %{ ln -s $HOME/.yadr/zsh/custom-prompts/prompt_skjer_setup ~/.zsh.prompts/prompt_skjer_setup }
   run %{ ln -s $HOME/.yadr/shell/scripts/* ~/.zsh.before }
   puts ""
   puts ""
@@ -240,7 +243,16 @@ def install_dircolors
   puts ""
 end
 
-def install_term_theme
+def install_iterm_config
+  puts "======================================================"
+  puts "Installing iTerm2 configuration"
+  puts "======================================================"
+  run %{ cp -f $HOME/.yadr/iTerm2/com.googlecode.iterm2.plist $HOME/Library/Preferences }
+  run %{ curl -L https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh | bash }
+  run puts
+end
+
+def install_iterm_theme
   puts "======================================================"
   puts "Installing iTerm2 solarized theme."
   puts "======================================================"

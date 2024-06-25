@@ -10,7 +10,7 @@ if [ ! -d "$HOME/.yadr" ]; then
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
     rake install
-    ln -s "$HOME/Repositories/dotfiles" "$HOME/.yadr"
+    ln -s "$HOME/.yadr" "$HOME/Repositories/dotfiles"
 else
     echo "YADR is already installed"
 fi
