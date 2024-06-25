@@ -172,7 +172,7 @@ def install_homebrew
   puts "======================================================"
   puts "Installing Homebrew packages...There may be some warnings."
   puts "======================================================"
-  run %{ brew bundle $HOME/.yader/Brewfile }
+  run %{ brew bundle --file $HOME/.yadr/Brewfile }
   puts
   puts
 end
