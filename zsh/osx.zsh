@@ -9,7 +9,7 @@ export QUOTING_STYLE=literal
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 # Add thefuck module
-eval "$(thefuck --alias)"
+eval $(thefuck --alias)
 
 # Add prompt tracking to Timing App
 PROMPT_TITLE='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/#$HOME/~}\007"'
