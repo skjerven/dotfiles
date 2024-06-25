@@ -6,7 +6,16 @@ desc "Hook our dotfiles into system-standard positions."
 task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts "Welcome to YADR Installation"
+  puts ""
+  puts "   _     _           _         "
+  puts "  | |   | |         | |        "
+  puts "  | |___| |_____  __| | ____   "
+  puts "  |_____  (____ |/ _  |/ ___)  "
+  puts "   _____| / ___ ( (_| | |      "
+  puts "  (_______\_____|\____|_|      "
+  puts ""
   puts "======================================================"
+  puts ""
   puts ""
 
   # install Homebrew
@@ -19,7 +28,6 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts "Installing configuration files..."
   puts "======================================================"
-  puts ""
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
   install_files(Dir.glob('ctags/*')) if want_to_install?('ctags config')
@@ -32,7 +40,6 @@ task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts "Setting up VIM configuration..."
   puts "======================================================"
-  puts ""
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
     Rake::Task["install_vundle"].execute
@@ -304,7 +311,9 @@ def ask(message, values)
 end
 
 def install_ssh_config
-  puts "Setting up ssh config file"
+  puts "======================================================"
+  puts "Setting up ssh config file.."
+  puts "======================================================"
   run %{ ln -nfs "$HOME/.yadr/ssh/config" "$HOME/.ssh/config" }
   run %{ chmod 600 "$HOME/.ssh/config" }
   puts ""
@@ -315,14 +324,12 @@ def install_prezto
   puts "======================================================"
   puts "Installing Prezto (ZSH Enhancements)..."
   puts "======================================================"
-  puts ""
 
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
 
   # The prezto runcoms are only going to be installed if zprezto has never been installed
   install_files(Dir.glob('zsh/prezto/runcoms/z*'), :symlink)
 
-  puts ""
   puts "Overriding prezto ~/.zpreztorc with YADR's zpreztorc to enable additional modules..."
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto-override/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" }
 
@@ -350,7 +357,9 @@ def install_prezto
 end
 
 def install_prezto_contrib
+  puts "======================================================"
   puts "Installing additonal Prezto modules..."
+  puts "======================================================"
   run %{ git clone --recurse-submodules https://github.com/belak/prezto-contrib "$HOME/.yadr/zsh/prezto/contrib" }
   puts ""
   puts ""
