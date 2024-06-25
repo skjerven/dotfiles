@@ -42,6 +42,9 @@ task :install => [:submodule_init, :submodules] do
   # iTerm2 solarized theme
   install_term_theme if RUBY_PLATFORM.downcase.include?("darwin")
 
+  # dircolors
+  install_dircolors if RUBY_PLATFORM.downcase.include?("darwin")
+
   run_bundle_config
 
   success_msg("installed")
@@ -207,6 +210,17 @@ def install_fonts
   run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
   run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
   puts
+end
+
+def install_dircolors
+  puts "======================================================"
+  puts "Installing dircolors"
+  puts "======================================================"
+  run %{ mkdir -p $HOME/Repositories/dircolors }
+  run %{ git clone https://github.com/seebi/dircolors-solarized.git $HOME/Repositories/dircolors-solarized }
+  run %{ ln -s ~/.dir_colors $HOME/Repositories/dircolors-solarized/dircolors.256dark}
+  puts
+
 end
 
 def install_term_theme
