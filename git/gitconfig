@@ -114,7 +114,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = /Users/bsskjerv/.gitignore
+  excludesfile = ~/.yadr/git/gitignore
 [advice]
   statusHints = false
 [diff]

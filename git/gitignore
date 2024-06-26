@@ -382,7 +382,6 @@ cscope.out
 cscope.in.out
 cscope.po.out
 
-
 # TeX      taken from: https://github.com/github/gitignore/blob/master/Tex.gitignore
 # ----------------------------------------------------------------------------------------------
 ## Core latex/pdflatex auxiliary files:

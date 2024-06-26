@@ -1,6 +1,11 @@
 custom/zsh
+<<<<<<< HEAD
 vim/backups
 vim/undodir
+=======
+
+vim/backups
+>>>>>>> upstream/master
 vim/view
 *un~
 vim/.netrwhist
@@ -9,7 +14,11 @@ vim/spell
 vim/after/.vimrc.after
 vim/.vundles.local
 vim/.vundles.local.bak
+<<<<<<< HEAD
 vim/bundle/*
+=======
+vim/bundle
+>>>>>>> upstream/master
 vim/sessions
 .netrwhist
 bin/subl
