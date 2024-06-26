@@ -1,8 +1,9 @@
 require 'rake'
 require 'fileutils'
+require 'open3'
 require File.join(File.dirname(__FILE__), 'bin', 'yadr', 'vundle')
 
-desc "Hook our dotfiles into system-standard positions."
+desc "Hook our dotfiles into system-standard positions"
 task :install => [:submodule_init, :submodules] do
   puts "======================================================"
   puts "Welcome to YADR Installation"
@@ -26,7 +27,7 @@ task :install => [:submodule_init, :submodules] do
 
   # this has all the runcoms from this directory.
   puts "======================================================"
-  puts "Installing configuration files..."
+  puts "Installing configuration files"
   puts "======================================================"
   install_files(Dir.glob('git/*')) if want_to_install?('git configs (color, aliases)')
   install_files(Dir.glob('ruby/*')) if want_to_install?('rubygems config (faster/no docs)')
@@ -38,7 +39,7 @@ task :install => [:submodule_init, :submodules] do
   puts
 
   puts "======================================================"
-  puts "Setting up VIM configuration..."
+  puts "Setting up VIM configuration"
   puts "======================================================"
   if want_to_install?('vim configuration (highly recommended)')
     install_files(Dir.glob('{vim,vimrc}'))
@@ -57,7 +58,7 @@ task :install => [:submodule_init, :submodules] do
   install_fonts
 
   # iTerm2 configuration
-  install_iterm_config
+  Rake::Task["install_iterm_config"].execute if RUBY_PLATFORM.downcase.include?("darwin")
 
   # iTerm2 solarized theme
   install_iterm_theme if RUBY_PLATFORM.downcase.include?("darwin")
@@ -93,7 +94,7 @@ task :submodule_init do
   end
 end
 
-desc "Init and update submodules."
+desc "Init and update submodules"
 task :submodules do
   unless ENV["SKIP_SUBMODULES"]
     puts "======================================================"
@@ -131,8 +132,8 @@ end
 desc "Runs Vundle installer in a clean vim environment"
 task :install_vundle do
   puts "======================================================"
-  puts "Installing and updating vundles."
-  puts "The installer will now proceed to run PluginInstall to install vundles."
+  puts "Installing and updating vundles"
+  puts "The installer will now proceed to run PluginInstall to install vundles"
   puts "======================================================"
   puts ""
 
@@ -183,19 +184,19 @@ def install_homebrew
   unless $?.success?
     puts "======================================================"
     puts "Installing Homebrew, the OSX package manager...If it's"
-    puts "already installed, this will do nothing."
+    puts "already installed, this will do nothing"
     puts "======================================================"
     run %{ bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" }
   end
 
   puts ""
   puts "======================================================"
-  puts "Updating Homebrew."
+  puts "Updating Homebrew"
   puts "======================================================"
   run %{ /opt/homebrew/bin/brew update }
   puts ""
   puts "======================================================"
-  puts "Installing Homebrew packages...There may be some warnings."
+  puts "Installing Homebrew packages...There may be some warnings"
   puts "======================================================"
   run %{ /opt/homebrew/bin/brew bundle --file $HOME/.yadr/Brewfile }
   run %{ /opt/homebrew/bin/brew doctor }
@@ -224,7 +225,7 @@ end
 
 def install_fonts
   puts "======================================================"
-  puts "Installing patched fonts for Powerline/Lightline."
+  puts "Installing patched fonts for Powerline/Lightline"
   puts "======================================================"
   run %{ cp -f $HOME/.yadr/fonts/* $HOME/Library/Fonts } if RUBY_PLATFORM.downcase.include?("darwin")
   run %{ mkdir -p ~/.fonts && cp ~/.yadr/fonts/* ~/.fonts && fc-cache -vf ~/.fonts } if RUBY_PLATFORM.downcase.include?("linux")
@@ -236,25 +237,43 @@ def install_dircolors
   puts "======================================================"
   puts "Installing dircolors"
   puts "======================================================"
-  run %{ mkdir -p $HOME/Repositories/dircolors }
   run %{ git clone https://github.com/seebi/dircolors-solarized.git $HOME/Repositories/dircolors-solarized }
   run %{ ln -nfs $HOME/Repositories/dircolors-solarized/dircolors.256dark ~/.dir_colors }
   puts ""
   puts ""
 end
 
-def install_iterm_config
+desc "Install iTerm2 shell integration and utilities"
+task :install_iterm_config do
   puts "======================================================"
   puts "Installing iTerm2 configuration"
   puts "======================================================"
+
   run %{ cp -f $HOME/.yadr/iTerm2/com.googlecode.iterm2.plist $HOME/Library/Preferences }
-  run %{ bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh)" }
-  run puts
+
+  cmd = %q{bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh)"}
+
+  Open3.popen3('bash') do |stdin, stdout, stderr, wait_thr|
+    stdin.puts(cmd)
+    stdin.close
+
+    puts stdout.read
+    puts stderr.read
+
+    exit_status = wait_thr.value
+    if exit_status.success?
+      puts "Command executed successfully"
+      puts ""
+    else
+      puts "Command failed with exit status: #{exit_status.exitstatus}"
+      puts ""
+    end
+  end
 end
 
 def install_iterm_theme
   puts "======================================================"
-  puts "Installing iTerm2 solarized theme."
+  puts "Installing iTerm2 solarized theme"
   puts "======================================================"
   run %{ /usr/libexec/PlistBuddy -c "Add :'Custom Color Presets':'Solarized Light' dict" ~/Library/Preferences/com.googlecode.iterm2.plist }
   run %{ /usr/libexec/PlistBuddy -c "Merge 'iTerm2/Solarized Light.itermcolors' :'Custom Color Presets':'Solarized Light'" ~/Library/Preferences/com.googlecode.iterm2.plist }
@@ -266,7 +285,7 @@ def install_iterm_theme
     puts "======================================================"
     puts "To make sure your profile is using the solarized theme"
     puts "Please check your settings under:"
-    puts "Preferences> Profiles> [your profile]> Colors> Load Preset.."
+    puts "Preferences> Profiles> [your profile]> Colors> Load Preset"
     puts "======================================================"
     return
   end
@@ -324,7 +343,7 @@ end
 
 def install_ssh_config
   puts "======================================================"
-  puts "Setting up ssh config file.."
+  puts "Setting up ssh config file"
   puts "======================================================"
   run %{ ln -nfs "$HOME/.yadr/ssh/config" "$HOME/.ssh/config" }
   run %{ chmod 600 "$HOME/.ssh/config" }
@@ -334,7 +353,7 @@ end
 
 def install_prezto
   puts "======================================================"
-  puts "Installing Prezto (ZSH Enhancements)..."
+  puts "Installing Prezto (ZSH Enhancements)"
   puts "======================================================"
 
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
@@ -343,7 +362,7 @@ def install_prezto
   # The prezto runcoms are only going to be installed if zprezto has never been installed
   install_files(Dir.glob('zsh/prezto/runcoms/z*'), :symlink)
 
-  puts "Overriding prezto ~/.zpreztorc with YADR's zpreztorc to enable additional modules..."
+  puts "Overriding prezto ~/.zpreztorc with YADR's zpreztorc to enable additional modules"
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto-override/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" }
 
   puts ""
@@ -371,7 +390,7 @@ end
 
 def install_prezto_contrib
   puts "======================================================"
-  puts "Installing additonal Prezto modules..."
+  puts "Installing additonal Prezto modules"
   puts "======================================================"
   run %{ git clone --recurse-submodules https://github.com/belak/prezto-contrib "$HOME/.yadr/zsh/prezto/contrib" }
   puts ""
@@ -398,7 +417,7 @@ def install_files(files, method = :symlink)
     puts "Target: #{target}"
 
     if File.exists?(target) && (!File.symlink?(target) || (File.symlink?(target) && File.readlink(target) != source))
-      puts "[Overwriting] #{target}...leaving original at #{target}.backup..."
+      puts "[Overwriting] #{target}...leaving original at #{target}.backup"
       run %{ mv "$HOME/.#{file}" "$HOME/.#{file}.backup" }
     end
 
@@ -454,7 +473,7 @@ def success_msg(action)
   puts "   _____| / ___ ( (_| | |      "
   puts "  (_______\_____|\____|_|      "
   puts ""
-  puts "YADR has been #{action}. Please restart your terminal and vim."
+  puts "YADR has been #{action}. Please restart your terminal and vim"
   puts ""
   puts ""
 end
