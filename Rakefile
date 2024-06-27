@@ -101,7 +101,7 @@ task :submodule_init do
   unless ENV["SKIP_SUBMODULES"]
     run %{
       cd $HOME/.yadr
-      git rm -rf $HOME/.yadr/zsh/prezto
+      rm -rf $HOME/.yadr/zsh/prezto
       git commit -m 'Removing prezto dir in preparation for subtree'
       git subtree add --prefix zsh/prezto https://github.com/sorin-ionescu/prezto.git master --squash
       git remote add -f prezto https://github.com/sorin-ionescu/prezto.git
