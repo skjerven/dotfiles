@@ -69,6 +69,9 @@ task :install => [:submodule_init, :submodules] do
   # Instal tmux plugins
   install_tmux_plugins
 
+  # Configure git remotes
+  git_remote_setup
+
   # Condfigure ruby gems
   run_bundle_config
 
