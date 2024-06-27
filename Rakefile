@@ -72,7 +72,8 @@ task :install => [:submodule_init, :submodules] do
   # Configure git remotes
   git_remote_setup
 
-  # Condfigure ruby gems
+  # Configure ruby
+  install_ruby
   run_bundle_config
 
   success_msg("YADR installed")
@@ -491,6 +492,14 @@ def apply_theme_to_iterm_profile_idx(index, color_scheme_path)
 
   run %{ /usr/libexec/PlistBuddy -c "Merge '#{color_scheme_path}' :'New Bookmarks':#{index}" ~/Library/Preferences/com.googlecode.iterm2.plist }
   run %{ defaults read com.googlecode.iterm2 }
+end
+
+def install_ruby
+  puts "======================================================"
+  puts "Installing Ruby with rbenv"
+  puts "======================================================"
+  run %{ rbenv install 3.3.3 }
+  run %{ rbenv global 3.3.3 }
 end
 
 def success_msg(action)
