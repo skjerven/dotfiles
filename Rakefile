@@ -102,6 +102,7 @@ task :submodule_init do
     run %{
       cd $HOME/.yadr
       rm -rf $HOME/.yadr/zsh/prezto
+      git add .
       git commit -m 'Removing prezto dir in preparation for subtree'
       git subtree add --prefix zsh/prezto https://github.com/sorin-ionescu/prezto.git master --squash
       git remote add -f prezto https://github.com/sorin-ionescu/prezto.git
