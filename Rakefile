@@ -76,6 +76,7 @@ task :install => [:submodule_init, :submodules] do
   install_ruby
   run_bundle_config
 
+  cleanup
   success_msg("YADR installed")
 end
 
@@ -256,7 +257,7 @@ def install_dircolors
   puts "Installing dircolors"
   puts "======================================================"
   run %{ git clone https://github.com/seebi/dircolors-solarized.git $HOME/Repositories/dircolors-solarized }
-  run %{ ln -nfs $HOME/Repositories/dircolors-solarized/dircolors.256dark ~/.dir_colors }
+  run %{ ln -nfs $HOME/Repositories/dircolors-solarized/dircolors.ansi-dark ~/.dir_colors }
   puts ""
   puts ""
 end
@@ -284,7 +285,7 @@ task :install_iterm_config do
   run %{ cp -f $HOME/.yadr/iTerm2/com.googlecode.iterm2.plist $HOME/Library/Preferences }
 
   cmd = %q{bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh)"}
-
+  run %{ git checkout zsh/prezto/runcoms/zshrc }
   Open3.popen3('bash') do |stdin, stdout, stderr, wait_thr|
     stdin.puts(cmd)
     stdin.close
@@ -444,6 +445,13 @@ def install_ruby
   puts "======================================================"
   run %{ rbenv install 3.3.3 }
   run %{ rbenv global 3.3.3 }
+end
+
+def cleanup
+  puts "======================================================"
+  puts "Cleaning up..."
+  puts "======================================================"
+  run %{ gsed -i "s/'ci'/'cI'/g" "$HOME/.yadr/vim/bundle/nerdcommenter/plugin/nerdcommenter.vim" }
 end
 
 def want_to_install?(section)
