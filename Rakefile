@@ -373,7 +373,6 @@ def install_prezto
   puts "======================================================"
   puts "Installing Prezto (ZSH Enhancements)"
   puts "======================================================"
-
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto" "${ZDOTDIR:-$HOME}/.zprezto" }
   puts
 
@@ -415,6 +414,16 @@ def install_prezto_contrib
   puts ""
 end
 
+def git_remote_setup
+  puts "======================================================"
+  puts "Setting up git remote "
+  puts "======================================================"
+  run %{ git remote add upstream https://github.com/skwp/dotfiles.git}
+  run %{ git remote set-url origin git@github.com:skjerven/dotfiles.git }
+  puts ""
+  puts ""
+
+end
 def want_to_install?(section)
   if ENV["ASK"]=="true"
     puts "Would you like to install configuration files for: #{section}? [y]es, [n]o"
