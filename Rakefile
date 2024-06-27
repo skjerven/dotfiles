@@ -66,9 +66,13 @@ task :install => [:submodule_init, :submodules] do
   # dircolors
   install_dircolors if RUBY_PLATFORM.downcase.include?("darwin")
 
+  # Instal tmux plugins
+  install_tmux_plugins
+
+  # Condfigure ruby gems
   run_bundle_config
 
-  success_msg("installed")
+  success_msg("YADR installed")
 end
 
 task :install_prezto do
@@ -243,6 +247,20 @@ def install_dircolors
   puts ""
 end
 
+def install_tmux_plugins
+  puts "======================================================"
+  puts "Installing tmux plugins"
+  puts "======================================================"
+  run %{ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm }
+  run %{ tmux new -d -s __noop >/dev/null 2>&1 || true }
+  run %{ tmux set-environment -g TMUX_PLUGIN_MANAGER_PATH "~/.tmux/plugins" }
+  run %{ ~/.tmux/plugins/tpm/bin/install_plugins || true }
+  run %{ tmux kill-session -t __noop >/dev/null 2>&1 || true }
+  puts ""
+  puts ""
+
+end
+
 desc "Install iTerm2 shell integration and utilities"
 task :install_iterm_config do
   puts "======================================================"
@@ -397,7 +415,7 @@ def install_prezto_contrib
   puts ""
 end
 
-def want_to_install? (section)
+def want_to_install?(section)
   if ENV["ASK"]=="true"
     puts "Would you like to install configuration files for: #{section}? [y]es, [n]o"
     STDIN.gets.chomp == 'y'
@@ -447,7 +465,6 @@ end
 def needs_migration_to_vundle?
   File.exists? File.join('vim', 'bundle', 'tpope-vim-pathogen')
 end
-
 
 def list_vim_submodules
   result=`git submodule -q foreach 'echo $name"||"\`git remote -v | awk "END{print \\\\\$2}"\`'`.select{ |line| line =~ /^vim.bundle/ }.map{ |line| line.split('||') }
