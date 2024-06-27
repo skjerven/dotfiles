@@ -35,8 +35,8 @@ alias du='du -h -d 2'
 # Using Homebrew GNU packages and prezto gnu-utility
 # so if/else logic not needed
 
-alias ll='ls -alh --color=auto'
-alias ls='ls --color=auto'
+alias ll='ls -alh --color=auto --group-directories-first'
+alias ls='ls --color=auto --group-directories-first'
 
 # show me files matching "ls grep"
 alias lsg='ll | grep'
