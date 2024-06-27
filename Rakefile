@@ -96,13 +96,22 @@ task :update do
   #not to clobber zsh files
 end
 
+desc "Initialize and update submodules"
 task :submodule_init do
   unless ENV["SKIP_SUBMODULES"]
-    run %{ git submodule update --init --recursive }
+    run %{
+      cd $HOME/.yadr
+      git rm -rf $HOME/.yadr/zsh/prezto
+      git commit -m 'Removing prezto dir in preparation for subtree'
+      git subtree add --prefix zsh/prezto https://github.com/sorin-ionescu/prezto.git master --squash
+      git remote add -f prezto https://github.com/sorin-ionescu/prezto.git
+      git subtree pull --prefix zsh/prezto https://github.com/sorin-ionescu/prezto.git master --squash
+      git submodule update --init --recursive
+    }
   end
 end
 
-desc "Init and update submodules"
+desc "Update submodules"
 task :submodules do
   unless ENV["SKIP_SUBMODULES"]
     puts "======================================================"
@@ -426,8 +435,16 @@ def git_remote_setup
   run %{ git remote set-url origin git@github.com:skjerven/dotfiles.git }
   puts ""
   puts ""
-
 end
+
+def install_ruby
+  puts "======================================================"
+  puts "Installing Ruby with rbenv"
+  puts "======================================================"
+  run %{ rbenv install 3.3.3 }
+  run %{ rbenv global 3.3.3 }
+end
+
 def want_to_install?(section)
   if ENV["ASK"]=="true"
     puts "Would you like to install configuration files for: #{section}? [y]es, [n]o"
@@ -492,14 +509,6 @@ def apply_theme_to_iterm_profile_idx(index, color_scheme_path)
 
   run %{ /usr/libexec/PlistBuddy -c "Merge '#{color_scheme_path}' :'New Bookmarks':#{index}" ~/Library/Preferences/com.googlecode.iterm2.plist }
   run %{ defaults read com.googlecode.iterm2 }
-end
-
-def install_ruby
-  puts "======================================================"
-  puts "Installing Ruby with rbenv"
-  puts "======================================================"
-  run %{ rbenv install 3.3.3 }
-  run %{ rbenv global 3.3.3 }
 end
 
 def success_msg(action)
