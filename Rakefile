@@ -219,6 +219,7 @@ def install_homebrew
   puts "======================================================"
   run %{ /opt/homebrew/bin/brew bundle --file $HOME/.yadr/Brewfile }
   run %{ /opt/homebrew/bin/brew doctor }
+  run %{ /opt/homebrew/bin/brew analytics off }
   puts ""
   puts ""
 end
