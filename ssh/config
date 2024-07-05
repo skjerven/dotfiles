@@ -14,6 +14,9 @@ UseKeychain yes
 ServerAliveInterval 100
 ServerAliveCountMax 2
 
+Host *
+  UseKeychain yes
+
 Host bitbucket.org
     User git
     IdentityFile ~/.ssh/bitbucket_rsa
@@ -28,14 +31,6 @@ Host gitlab.com
     User git
     IdentityFile ~/.ssh/gitlab_rsa
     IdentitiesOnly yes
-
-Host ssh.gitlab.aws.dev
-    User git
-    IdentityFile ~/.ssh/aws_gitlab_ecdsa
-    CertificateFile ~/.ssh/aws_gitlab_ecdsa-cert.pub
-    IdentitiesOnly yes
-    ProxyCommand none
-    ProxyJump none
 
 Host homelab
     Hostname homelab.skjerven.io
