@@ -408,8 +408,8 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/nul
 ###############################################################################
 
 # Set trackpad & mouse speed to a reasonable number
-defaults write -g com.apple.trackpad.scaling 2.0
-defaults write -g com.apple.mouse.scaling 2.0
+defaults write -g com.apple.trackpad.scaling 1.5
+defaults write -g com.apple.mouse.scaling 1.5
 
 # Right click for magic mouse
 defaults write com.apple.AppleMultitouchMouse MouseButtonMode -string TwoButton
