@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Gratuitously stolen from @mathiasbynens
 # https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
@@ -36,11 +38,10 @@ logo_blue='\033[38;5;21m'
 NC='\033[0m' # No Color
 
 echo ""
-echo "###############################################"
+cecho "###############################################" $NC
 echo ""
-echo " Welcome to OSX setup"
-echo " Please review this script before running it"
-echo ""
+cecho " Welcome to OSX setup" $NC
+cecho " Please review this script before running it" $NC
 cecho "
                  'c.
                ,xNMM.
@@ -60,8 +61,7 @@ cecho "    kMMMMMMMMMMMMMMMMMMMMMMd
      ;KMMMMMMMWXXWMMMMMMMk.
        .cooc,.    .,coo:." $logo_blue
 echo ""
-echo ""
-echo "###############################################"
+cecho "###############################################" $NC
 echo ""
 
 # Ask for the administrator password upfront
@@ -78,7 +78,7 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 ###############################################################################
 
 echo ""
-echo "Set your computer name (as done via System Preferences >> Sharing):"
+cecho "Set your computer name (as done via System Preferences >> Sharing):" $magenta
 read COMPUTER_NAME
 sudo scutil --set ComputerName $COMPUTER_NAME
 sudo scutil --set HostName $COMPUTER_NAME
@@ -100,7 +100,7 @@ defaults write com.apple.systemuiserver menuExtras -array \
   "/System/Library/CoreServices/Menu Extras/Clock.menu"
 
 # Disable menubar transparency
-sudo defaults write com.apple.universalaccess reduceTransparency -bool true
+defaults write com.apple.Accessibility EnhancedBackgroundContrastEnabled -bool true
 
 # Setting system theme to dark
 defaults write NSRequiresAquaSystemAppearance -bool No
@@ -502,7 +502,7 @@ defaults write com.apple.dock show-recents -bool false
 #defaults write com.apple.dock showLaunchpadGestureEnabled -int 0
 
 # Reset Launchpad, but keep the desktop wallpaper intact
-find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
+#find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -delete
 
 # Adjust column and rows in Launchpad
 defaults write com.apple.dock springboard-columns -int 6
@@ -706,16 +706,16 @@ sudo pmset -a lidwake 1
 sudo pmset -a autorestart 1
 
 # Restart automatically if the computer freezes
-sudo systemsetup -setrestartfreeze on
+#sudo systemsetup -setrestartfreeze on
 
-# Sleep the display after 15 minutes
-sudo pmset -a displaysleep 15
+# Sleep the display after 5 minutes
+sudo pmset -a displaysleep 5
 
 # Disable machine sleep while charging
 sudo pmset -c sleep 0
 
-# Set machine sleep to 5 minutes on battery
-sudo pmset -b sleep 5
+# Set machine sleep to 10 minutes on battery
+sudo pmset -b sleep 10
 
 # Speed up wake from sleep to 24 hours from an hour
 # http://www.cultofmac.com/221392/quick-hack-speeds-up-retina-macbooks-wake-from-sleep-os-x-tips/
@@ -765,7 +765,7 @@ sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutio
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
 # Disable local Time Machine backups
-# # hash tmutil &> /dev/null && sudo tmutil disablelocal
+#hash tmutil &> /dev/null && sudo tmutil disablelocal
 
 
 
@@ -804,7 +804,7 @@ defaults write com.apple.iCal IncludeDebugMenu -bool true
 # Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
-defaults write com.apple.TextEdit PlainTextEncoding -int 4
+
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
 
 # Enable the debug menu in Disk Utility
@@ -848,6 +848,7 @@ defaults write com.apple.commerce AutoUpdate -bool true
 defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
 
 
+
 ###############################################################################
 # Messages                                                                    #
 ###############################################################################
@@ -868,23 +869,17 @@ defaults write com.apple.messageshelper.MessageController SOInputLineSettings -d
 ###############################################################################
 
 echo ""
-cecho "Done!" $cyan
+cecho "Done!" $magenta
 echo ""
-echo ""
-cecho "################################################################################" $white
-echo ""
-echo ""
-cecho "Note that some of these changes require a logout/restart to take effect." $red
-cecho "Killing some open applications in order to take effect." $red
+cecho "Note that some of these changes require a logout/restart to take effect." $magenta
+cecho "Killing some open applications in order to take effect." $magenta
 echo ""
 
-find ~/Library/Application\ Support/Dock -name "*.db" -maxdepth 1 -delete
 for app in "Activity Monitor" \
            "Address Book" \
            "Calendar" \
            "Contacts" \
            "cfprefsd" \
-           "Dock" \
            "Finder" \
            "Mail" \
            "Messages" \
