@@ -286,7 +286,7 @@ task :install_iterm_config do
   run %{ cp -f $HOME/.yadr/iTerm2/com.googlecode.iterm2.plist $HOME/Library/Preferences }
 
   cmd = %q{bash -c "$(curl -fsSL https://iterm2.com/shell_integration/install_shell_integration_and_utilities.sh)"}
-  run %{ git checkout zsh/prezto/runcoms/zshrc }
+  run %{ git checkout zsh/prezto-override/zshrc }
   Open3.popen3('bash') do |stdin, stdout, stderr, wait_thr|
     stdin.puts(cmd)
     stdin.close
@@ -393,7 +393,12 @@ def install_prezto
   puts
 
   # The prezto runcoms are only going to be installed if zprezto has never been installed
-  install_files(Dir.glob('zsh/prezto/runcoms/z*'), :symlink)
+  install_files(Dir.glob('zsh/prezto-override/zshrc'), :symlink)
+  install_files(Dir.glob('zsh/prezto/runcoms/zlogin'), :symlink)
+  install_files(Dir.glob('zsh/prezto/runcoms/zlogout'), :symlink)
+  install_files(Dir.glob('zsh/prezto-override/zpreztorc'), :symlink)
+  install_files(Dir.glob('zsh/prezto/runcoms/zprofile'), :symlink)
+  install_files(Dir.glob('zsh/prezto/runcoms/zshenv'), :symlink)
 
   puts "Overriding prezto ~/.zpreztorc with YADR's zpreztorc to enable additional modules"
   run %{ ln -nfs "$HOME/.yadr/zsh/prezto-override/zpreztorc" "${ZDOTDIR:-$HOME}/.zpreztorc" }
