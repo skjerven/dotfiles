@@ -146,4 +146,5 @@ if filereadable(hostfile)
      exe 'source ' . hostfile
 endif
 
+set shell=/opt/homebrew/bin/zsh
 " vim: fdm=marker fdl=0

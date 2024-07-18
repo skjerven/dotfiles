@@ -123,7 +123,7 @@ function prompt_skjer_setup {
   zstyle ':prezto:module:git:info:added' format ' %%B%F{100}✚%f%%b'
   zstyle ':prezto:module:git:info:ahead' format ' %%B%F{057}⬆%f%%b'
   zstyle ':prezto:module:git:info:behind' format ' %%B%F{057}⬇%f%%b'
-  zstyle ':prezto:module:git:info:branch' format ' %F{white}\U2009%b%f'
+  zstyle ':prezto:module:git:info:branch' format ' %F{white}\U2009\U2009%b%f'
   zstyle ':prezto:module:git:info:commit' format ' %F{cyan}➦ %.7c%f'
   zstyle ':prezto:module:git:info:deleted' format ' %%B%F{160}✖%f%%b'
   zstyle ':prezto:module:git:info:modified' format ' %%B%F{033}✱%f%%b'

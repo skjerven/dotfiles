@@ -14,9 +14,6 @@ UseKeychain yes
 ServerAliveInterval 100
 ServerAliveCountMax 2
 
-Host *
-  UseKeychain yes
-
 Host bitbucket.org
     User git
     IdentityFile ~/.ssh/bitbucket_rsa
@@ -70,3 +67,6 @@ Host pihole
     User pihole
     IdentityFile ~/.ssh/pihole_rsa
     IdentitiesOnly yes
+
+Host *
+  UseKeychain yes
