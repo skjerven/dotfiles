@@ -7,7 +7,6 @@ if is_osx; then
   brew upgrade
   brew cleanup
   brew doctor
-  echo ""
 
   #Homebrew casks
   echo "Updating Homebrew casks"
