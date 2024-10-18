@@ -218,3 +218,6 @@ alias top='htop'
 
 # pip3 alias
 alias pip='pip3'
+
+# Terraform alias
+alias tf='terraform'
