@@ -8,7 +8,7 @@
 
 function system-update() {
   brew-update
-  pip-update
+  #pip-update
   ruby-update
   vim-update
   prezto-update

@@ -14,6 +14,9 @@ UseKeychain yes
 ServerAliveInterval 100
 ServerAliveCountMax 2
 
+# Stop annoying me about asking for new keys
+StrictHostKeyChecking accept-new
+
 Host bitbucket.org
     User git
     IdentityFile ~/.ssh/bitbucket_rsa
