@@ -221,3 +221,6 @@ alias pip='pip3'
 
 # Terraform alias
 alias tf='terraform'
+
+# Bliss alias to avoid stupid debug output
+alias bliss='LOG_LEVEL=1 bliss'
