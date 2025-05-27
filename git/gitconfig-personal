@@ -1,0 +1,7 @@
+[user]
+  name = Brian Skjerven
+  email = brian.skjerven@gmail.com
+[credential "https://github.com"]
+  username = skjerven
+[core]
+  sshCommand = ssh -o IdentitiesOnly=yes -i /Users/brian.skjerven/.ssh/github_rsa -F /dev/null

@@ -1,0 +1,7 @@
+[user]
+  name = Brian Skjerven
+  email = brian.skjerven@weka.io
+[credential "https://github.com"]
+  username = bskjerven
+[core]
+  sshCommand = ssh -o IdentitiesOnly=yes -i /Users/brian.skjerven/.ssh/weka_github -F /dev/null
