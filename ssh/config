@@ -72,4 +72,4 @@ Host pihole
     IdentitiesOnly yes
 
 Host *
-  UseKeychain yes
+    UseKeychain yes
