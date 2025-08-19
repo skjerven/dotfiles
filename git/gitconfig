@@ -135,3 +135,5 @@
     path = "/Users/brian.skjerven/.gitconfig-work"
 [includeIf "gitdir:/Users/brian.skjerven/.yadr/"]
     path = "/Users/brian.skjerven/.gitconfig-personal"
+[user]
+	email = brian.skjerven@gmail.com
