@@ -390,6 +390,7 @@ cscope.po.out
 # .tfstate files
 *.tfstate
 *.tfstate.*
+*.terraform.*
 
 # Crash log files
 crash.log

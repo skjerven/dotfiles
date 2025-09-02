@@ -131,9 +131,9 @@
   defaultBranch = main
 #[credential]
 #  helper = /usr/local/share/gcm-core/git-credential-manager
-[includeIf "gitdir:/Users/brian.skjerven/Projects/"]
-    path = "/Users/brian.skjerven/.gitconfig-work"
-[includeIf "gitdir:/Users/brian.skjerven/.yadr/"]
-    path = "/Users/brian.skjerven/.gitconfig-personal"
-[user]
-	email = brian.skjerven@gmail.com
+[includeIf "gitdir:/Users/brian/Projects/"]
+  path = "/Users/brian/.gitconfig-work"
+[includeIf "gitdir:/Users/brian/.yadr/"]
+  path = "/Users/brian/.gitconfig-personal"
+[includeIf "gitdir:/Users/brian/Repositories/"]
+  path = "/Users/brian/.gitconfig-personal"
