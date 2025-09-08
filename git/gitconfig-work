@@ -4,4 +4,4 @@
 [credential "https://github.com"]
   username = bskjerven
 [core]
-  sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/weka_github -F /dev/null
+  sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/weka-github -F /dev/null
