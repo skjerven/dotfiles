@@ -1,7 +1,11 @@
 [user]
   name = Brian Skjerven
   email = brian.skjerven@weka.io
+[credential]
+  helper = /usr/local/share/gcm-core/git-credential-manger
 [credential "https://github.com"]
   username = bskjerven
+[credential "https://dev.azure.com"]
+  useHttpPath = true
 [core]
   sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/weka-github -F /dev/null
