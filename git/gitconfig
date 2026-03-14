@@ -136,3 +136,7 @@
   path = "~/.gitconfig-personal"
 [includeIf "gitdir:~/Repositories/"]
   path = "~/.gitconfig-personal"
+[credential]
+  helper = /usr/local/share/gcm-core/git-credential-manager
+[credential "https://dev.azure.com"]
+  useHttpPath = true
