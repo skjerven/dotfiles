@@ -323,6 +323,15 @@ zstyle ':prezto:module:git:alias' skip 'yes'
 - `gwX` removes files from the working tree and from the index recursively and
   forcefully.
 
+### Working tree (W)
+
+- `gWa` adds a new working tree.
+- `gWl` lists all working trees.
+- `gWx` removes a working tree.
+- `gWX` removes a working tree forcefully.
+- `gWm` moves a working tree to a new location.
+- `gWc` prunes stale worktrees and their administrative data.
+
 ### Shadows
 
 The following aliases may shadow system commands:
