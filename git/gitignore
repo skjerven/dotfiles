@@ -180,6 +180,11 @@ _site/
 .directory
 
 
+# Markdown
+# ----------------------------------------------------------------------------------------------
+.markdownlint-cli2.jsonc
+
+
 # MATLAB       taken from: https://github.com/github/gitignore/blob/master/Global/Matlab.gitignore
 # ----------------------------------------------------------------------------------------------
 # Windows default autosave extension
