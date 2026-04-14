@@ -7,5 +7,3 @@
   username = bskjerven
 [credential "https://dev.azure.com"]
   useHttpPath = true
-[core]
-  sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/weka-github -F /dev/null

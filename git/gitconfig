@@ -113,6 +113,7 @@
   autocrlf = false
   editor = vim
   excludesfile = ~/.yadr/git/gitignore
+  sshCommand = ssh
 [advice]
   statusHints = false
 [diff]
