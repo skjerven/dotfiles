@@ -44,6 +44,12 @@ Host homelab
     IdentityFile ~/.ssh/homelab_rsa
     IdentitiesOnly yes
 
+Host homelab-k3s
+    Hostname homelab-k3s.skjerven.io
+    User homelab-admin
+    IdentityFile ~/.ssh/homelab_rsa
+    IdentitiesOnly yes
+
 Host euler nas1
     Hostname euler.skjerven.io
     User nas-admin
