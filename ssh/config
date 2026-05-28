@@ -78,7 +78,7 @@ Host openvpn vpn
     IdentitiesOnly yes
 
 Host pihole
-    Hostname pihole.skjerven.io
+    Hostname pihole-host.skjerven.io
     User pihole
     IdentityFile ~/.ssh/pihole_rsa
     IdentitiesOnly yes

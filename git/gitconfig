@@ -114,6 +114,7 @@
   editor = vim
   excludesfile = ~/.yadr/git/gitignore
   sshCommand = ssh
+  pager = less -FRX
 [advice]
   statusHints = false
 [diff]
@@ -141,3 +142,5 @@
   helper = /usr/local/share/gcm-core/git-credential-manager
 [credential "https://dev.azure.com"]
   useHttpPath = true
+[rebase]
+	autoStash = true
