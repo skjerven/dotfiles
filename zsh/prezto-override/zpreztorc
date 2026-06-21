@@ -236,13 +236,11 @@ zstyle ':prezto:module:ssh-agent' forwarding 'yes'
 
 # Set ssh-agent identities to load.
 zstyle ':prezto:module:ssh-agent' identities \
-  'aws_rsa' \
-  'bitbucket_rsa' \
-  'euler_rsa' \
-  'github_rsa' \
-  'klein_rsa' \
-  'newton_rsa' \
-  'pihole_rsa'
+  'ada_ed25519' \
+  'euler_ed25519' \
+  'github_ed25519' \
+  'homelab_ed25519' \
+  'pihole_ed25519'
 
 
 #

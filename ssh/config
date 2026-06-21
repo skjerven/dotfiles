@@ -17,14 +17,9 @@ ServerAliveCountMax 2
 # Stop annoying me about asking for new keys
 StrictHostKeyChecking accept-new
 
-Host bitbucket.org
-    User git
-    IdentityFile ~/.ssh/bitbucket_rsa
-    IdentitiesOnly yes
-
 Host github.com
     User git
-    IdentityFile ~/.ssh/github_rsa
+    IdentityFile ~/.ssh/github_ed25519
     IdentitiesOnly yes
 
 Host github-weka
@@ -33,52 +28,28 @@ Host github-weka
     IdentityFile ~/.ssh/weka-github
     IdentitiesOnly yes
 
-Host gitlab.com
-    User git
-    IdentityFile ~/.ssh/gitlab_rsa
-    IdentitiesOnly yes
-
-Host homelab
-    Hostname homelab.skjerven.io
-    User home-admin
-    IdentityFile ~/.ssh/homelab_rsa
-    IdentitiesOnly yes
-
-Host homelab-k3s
+Host homelab homelab-k3s
     Hostname homelab-k3s.skjerven.io
     User homelab-admin
-    IdentityFile ~/.ssh/homelab_rsa
+    IdentityFile ~/.ssh/homelab_ed25519
     IdentitiesOnly yes
 
 Host euler nas1
     Hostname euler.skjerven.io
     User nas-admin
     Port 2022
-    IdentityFile ~/.ssh/euler_rsa
+    IdentityFile ~/.ssh/euler_ed25519
     IdentitiesOnly yes
 
 Host ada nas2
     Hostname ada.skjerven.io
     User nas-admin
     Port 2022
-    IdentityFile ~/.ssh/ada_rsa
-    IdentitiesOnly yes
-
-Host klein qnap nas3
-    Hostname klein.skjerven.io
-    User nas-admin
-    Port 2022
-    IdentityFile ~/.ssh/klein_rsa
-    IdentitiesOnly yes
-
-Host openvpn vpn
-    Hostname vpn.skjerven.io
-    User openvpn-admin
-    IdentityFile ~/.ssh/openvpnas
+    IdentityFile ~/.ssh/ada_ed25519
     IdentitiesOnly yes
 
 Host pihole
     Hostname pihole-host.skjerven.io
     User pihole
-    IdentityFile ~/.ssh/pihole_rsa
+    IdentityFile ~/.ssh/pihole_ed25519
     IdentitiesOnly yes

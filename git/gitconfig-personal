@@ -4,4 +4,4 @@
 [credential "https://github.com"]
   username = skjerven
 [core]
-  sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/github_rsa -F /dev/null
+  sshCommand = ssh -o IdentitiesOnly=yes -i ~/.ssh/github_ed25519 -F /dev/null
