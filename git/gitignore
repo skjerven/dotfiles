@@ -585,7 +585,7 @@ $RECYCLE.BIN/
 
 
 # Xcode       taken from: https://github.com/gitignore/blob/master/Global/Xcode.gitignore
-#  ---------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------------------
 build/
 *.pbxuser
 !default.pbxuser
@@ -600,3 +600,7 @@ xcuserdata
 *.moved-aside
 DerivedData
 *.xcuserstate
+
+# Claude
+# ---------------------------------------------------------------------------------------------
+**/.claude/settings.local.json
